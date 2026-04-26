@@ -1,0 +1,75 @@
+@use '../../styles/variables' as *;
+
+.experience { background: $bg-white; }
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-top: 56px;
+
+  @media (max-width: 960px) { grid-template-columns: repeat(2, 1fr); }
+  @media (max-width: 600px) { grid-template-columns: 1fr; }
+}
+
+.card {
+  background: $bg-white;
+  border: 1px solid $border;
+  border-radius: $radius-lg;
+  padding: 28px 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  transition: all $trans;
+
+  &:hover {
+    border-color: $border-hover;
+    box-shadow: $shadow-hover;
+    transform: translateY(-3px);
+  }
+}
+
+.top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.icon {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: $radius-sm;
+}
+
+.primary   { background: $primary-light;   color: $primary; }
+.secondary { background: $secondary-light; color: $secondary; }
+.emerald   { background: $emerald-light;   color: $emerald; }
+.violet    { background: $violet-light;    color: $violet; }
+.amber     { background: $amber-light;     color: $amber; }
+
+.metric {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: $primary;
+  background: $primary-light;
+  border-radius: $radius-full;
+  padding: 4px 14px;
+  letter-spacing: 0.04em;
+  border: 1px solid rgba($primary, 0.1);
+}
+
+.title {
+  font-family: $font-heading;
+  font-size: 0.96rem;
+  font-weight: 700;
+  color: $text-heading;
+}
+
+.desc {
+  font-size: 0.88rem;
+  color: $text-muted;
+  line-height: 1.7;
+}

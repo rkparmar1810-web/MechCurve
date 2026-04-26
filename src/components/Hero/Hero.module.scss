@@ -1,0 +1,267 @@
+@use '../../styles/variables' as *;
+
+/* ── Moving arrow animation for CTA button ── */
+.arrowBounce {
+  display: inline-flex;
+  animation: arrowSlide 1.4s ease-in-out infinite;
+}
+
+@keyframes arrowSlide {
+  0% {
+    transform: translateX(0);
+    opacity: 0.7;
+  }
+  50% {
+    transform: translateX(5px);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 0.7;
+  }
+}
+
+/* ── Animated current-flow border for the glass card ── */
+.currentBorderWrap {
+  position: relative;
+  border-radius: 1rem;
+  padding: 2px; /* this gap IS the visible border */
+  overflow: hidden;
+}
+
+.currentBorderWrap::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: conic-gradient(
+    from var(--border-angle, 0deg),
+    transparent 0%,
+    transparent 25%,
+    rgba(234, 193, 23, 0.8) 33%,
+    rgba(234, 193, 23, 1) 36%,
+    rgba(250, 204, 21, 0.6) 42%,
+    transparent 50%,
+    transparent 75%,
+    rgba(59, 130, 246, 0.5) 82%,
+    rgba(59, 130, 246, 0.7) 85%,
+    rgba(96, 165, 250, 0.4) 90%,
+    transparent 100%
+  );
+  animation: borderSpin 3.2s linear infinite;
+  z-index: 0;
+}
+
+/* Glow trace that trails behind the current */
+.currentBorderWrap::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: conic-gradient(
+    from var(--border-angle, 0deg),
+    transparent 0%,
+    transparent 28%,
+    rgba(234, 193, 23, 0.25) 34%,
+    transparent 44%,
+    transparent 78%,
+    rgba(59, 130, 246, 0.18) 84%,
+    transparent 94%
+  );
+  filter: blur(6px);
+  animation: borderSpin 3.2s linear infinite;
+  z-index: 0;
+}
+
+.currentBorderInner {
+  position: relative;
+  z-index: 1;
+  border-radius: calc(1rem - 2px);
+}
+
+@keyframes borderSpin {
+  to {
+    --border-angle: 360deg;
+  }
+}
+
+/* Register the CSS custom property for animation */
+@property --border-angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+/* ── Legacy classes kept for module compatibility ── */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  padding-top: 120px;
+  padding-bottom: 80px;
+  background: $bg-white;
+}
+
+.bgPattern {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background-image:
+    radial-gradient(circle at 1px 1px, rgba($bg-muted, 0.5) 1px, transparent 1px);
+  background-size: 44px 44px;
+  opacity: 0.18;
+  pointer-events: none;
+}
+
+.heroOverlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    180deg,
+    rgba($bg-white, 0.6) 0%,
+    rgba($bg-white, 0.3) 40%,
+    rgba($bg-white, 0.5) 100%
+  );
+  pointer-events: none;
+}
+
+.inner {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 52px;
+  align-items: center;
+
+  @media (max-width: 900px) {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+}
+
+.content { max-width: 580px; }
+
+.badge {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: $primary;
+  background: $primary-light;
+  padding: 7px 18px;
+  border-radius: $radius-full;
+  margin-bottom: 28px;
+  border: 1px solid rgba($primary, 0.1);
+}
+
+.heading {
+  font-family: $font-heading;
+  font-size: clamp(2.1rem, 4.4vw, 3.25rem);
+  font-weight: 700;
+  line-height: 1.12;
+  letter-spacing: -0.035em;
+  color: $text-heading;
+  margin-bottom: 22px;
+}
+
+.accent {
+  background: $gradient;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.sub {
+  font-size: 1.02rem;
+  color: $text-muted;
+  line-height: 1.75;
+  max-width: 500px;
+  margin-bottom: 30px;
+}
+
+.actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 22px;
+}
+
+.heroMeta {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.metaPill {
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: $text-muted;
+  background: $bg-white;
+  border: 1px solid $border;
+  border-radius: $radius-full;
+  padding: 6px 12px;
+}
+
+.graphic {
+  max-width: 520px;
+  justify-self: end;
+
+  @media (max-width: 900px) {
+    justify-self: start;
+  }
+}
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.statCard {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 18px 16px;
+  background: $bg-white;
+  border: 1px solid $border;
+  border-radius: $radius-lg;
+  box-shadow: $shadow-sm;
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    border-color: rgba($primary, 0.32);
+    box-shadow: $shadow-md;
+  }
+}
+
+.statIcon {
+  width: 28px;
+  height: 28px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  background: $primary-light;
+  color: $primary;
+}
+
+.statValue {
+  font-family: $font-heading;
+  font-size: 1.38rem;
+  font-weight: 700;
+  color: $text-heading;
+  letter-spacing: -0.02em;
+}
+
+.statLabel {
+  font-size: 0.75rem;
+  color: $text-muted;
+  font-weight: 600;
+}

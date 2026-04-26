@@ -1,0 +1,340 @@
+/* ═══════════════════════════════════════════════════════════
+   Legal Page — dark premium, matches site theme exactly.
+   Dark section bg, gold badge, frosted dark cards,
+   gold toggle, gold bullet dots.
+   ═══════════════════════════════════════════════════════════ */
+
+.legalPage {
+	position: relative;
+	isolation: isolate;
+	padding: 140px 16px 96px;
+	overflow: hidden;
+	background: #06080d;
+
+	@media (max-width: 640px) {
+		padding: 120px 14px 72px;
+	}
+}
+
+/* ── Subtle dot-grid texture ── */
+.bgGlow {
+	position: absolute;
+	inset: 0;
+	pointer-events: none;
+	z-index: 0;
+	background-image: radial-gradient(
+		circle at 1px 1px,
+		rgba(148, 163, 184, 0.05) 1px,
+		transparent 1px
+	);
+	background-size: 36px 36px;
+
+	/* gradient mask so the pattern fades on edges */
+	mask-image: radial-gradient(
+		ellipse 80% 70% at 50% 40%,
+		black 30%,
+		transparent 80%
+	);
+	-webkit-mask-image: radial-gradient(
+		ellipse 80% 70% at 50% 40%,
+		black 30%,
+		transparent 80%
+	);
+}
+
+.container {
+	position: relative;
+	z-index: 2;
+	max-width: 900px;
+	margin: 0 auto;
+}
+
+/* ── Back link ── */
+.backLink {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	margin-bottom: 28px;
+	font-size: 0.82rem;
+	font-weight: 600;
+	color: #94a3b8;
+	text-decoration: none;
+	letter-spacing: 0.02em;
+	transition:
+		color 240ms ease,
+		gap 240ms ease;
+
+	svg {
+		flex-shrink: 0;
+		transition: transform 240ms ease;
+	}
+
+	&:hover {
+		color: #eac117;
+		gap: 10px;
+
+		svg {
+			transform: translateX(-3px);
+		}
+	}
+}
+
+/* ── Header block ── */
+.headerCard {
+	position: relative;
+	overflow: hidden;
+	padding: 32px 28px;
+	border: 1px solid rgba(255, 255, 255, 0.07);
+	border-radius: 20px;
+	background: rgba(10, 20, 44, 0.55);
+	backdrop-filter: blur(14px);
+	-webkit-backdrop-filter: blur(14px);
+	box-shadow:
+		0 24px 56px rgba(0, 0, 0, 0.5),
+		inset 0 1px 0 rgba(255, 255, 255, 0.05);
+
+	/* Subtle gold top border glow */
+	&::before {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 10%;
+		right: 10%;
+		height: 1px;
+		background: linear-gradient(
+			90deg,
+			transparent,
+			rgba(234, 193, 23, 0.35) 40%,
+			rgba(234, 193, 23, 0.35) 60%,
+			transparent
+		);
+		pointer-events: none;
+	}
+
+	h1 {
+		position: relative;
+		margin: 14px 0 12px;
+		font-size: clamp(1.9rem, 4vw, 3rem);
+		line-height: 1.08;
+		letter-spacing: -0.03em;
+		font-weight: 800;
+		color: #ffffff;
+		font-family: 'Space Grotesk', 'Inter', sans-serif;
+	}
+
+	p {
+		position: relative;
+		margin: 0;
+		font-size: 0.97rem;
+		line-height: 1.8;
+		color: #94a3b8;
+		max-width: 58ch;
+	}
+
+	@media (max-width: 640px) {
+		padding: 24px 18px;
+	}
+}
+
+/* ── Gold kicker badge — matches FAQ / Contact ── */
+.kicker {
+	position: relative;
+	display: inline-flex;
+	align-items: center;
+	padding: 6px 15px;
+	border-radius: 999px;
+	border: 1px solid rgba(234, 193, 23, 0.18);
+	background: rgba(234, 193, 23, 0.06);
+	font-size: 0.68rem;
+	font-weight: 800;
+	letter-spacing: 0.16em;
+	text-transform: uppercase;
+	color: #fcd34d;
+}
+
+/* ── Last updated ── */
+.updated {
+	position: relative;
+	display: block;
+	margin-top: 14px;
+	font-size: 0.76rem;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+	font-weight: 700;
+	color: #475569;
+}
+
+/* ── Toggle pill — switch between Terms / Privacy ── */
+.toggle {
+	position: relative;
+	margin-top: 24px;
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	padding: 5px;
+	border-radius: 14px;
+	border: 1px solid rgba(255, 255, 255, 0.08);
+	background: rgba(6, 8, 13, 0.6);
+}
+
+.toggleBtn {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	padding: 10px 18px;
+	border-radius: 10px;
+	font-size: 0.84rem;
+	font-weight: 700;
+	text-decoration: none;
+	letter-spacing: 0.01em;
+	color: #64748b;
+	transition:
+		background 260ms ease,
+		color 260ms ease,
+		box-shadow 260ms ease,
+		transform 260ms ease;
+
+	&:hover {
+		color: #e2e8f0;
+		transform: translateY(-1px);
+	}
+}
+
+.active {
+	color: #0f172a;
+	background: linear-gradient(135deg, #eac117 0%, #d97706 100%);
+	box-shadow:
+		0 6px 18px rgba(234, 193, 23, 0.28),
+		inset 0 1px 0 rgba(255, 255, 255, 0.2);
+
+	&:hover {
+		color: #0f172a;
+	}
+}
+
+/* ── Section cards grid ── */
+.sectionsWrap {
+	display: grid;
+	gap: 12px;
+	margin-top: 20px;
+}
+
+.sectionCard {
+	position: relative;
+	overflow: hidden;
+	padding: 20px 22px;
+	border-radius: 16px;
+	border: 1px solid rgba(255, 255, 255, 0.06);
+	background: rgba(10, 20, 44, 0.55);
+	backdrop-filter: blur(12px);
+	-webkit-backdrop-filter: blur(12px);
+	box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
+	transition:
+		border-color 280ms ease,
+		box-shadow 280ms ease;
+
+	/* Gold left edge line */
+	&::before {
+		content: '';
+		position: absolute;
+		top: 14px;
+		bottom: 14px;
+		left: 0;
+		width: 2px;
+		background: linear-gradient(to bottom, #eac117, #d97706);
+		border-radius: 0 2px 2px 0;
+		opacity: 0.5;
+		transition: opacity 280ms ease;
+	}
+
+	&:hover {
+		border-color: rgba(234, 193, 23, 0.14);
+		box-shadow:
+			0 16px 40px rgba(0, 0, 0, 0.4),
+			0 0 32px rgba(234, 193, 23, 0.04);
+
+		&::before {
+			opacity: 1;
+		}
+	}
+
+	h2 {
+		margin: 0;
+		font-size: 1rem;
+		line-height: 1.35;
+		font-weight: 700;
+		color: #e2e8f0;
+		letter-spacing: -0.01em;
+		font-family: 'Space Grotesk', 'Inter', sans-serif;
+	}
+
+	ul {
+		margin: 12px 0 0;
+		padding: 0;
+		list-style: none;
+		display: grid;
+		gap: 8px;
+	}
+
+	li {
+		position: relative;
+		padding-left: 16px;
+		font-size: 0.92rem;
+		line-height: 1.75;
+		color: #94a3b8;
+
+		&::before {
+			content: '';
+			position: absolute;
+			left: 0;
+			top: 0.72em;
+			width: 5px;
+			height: 5px;
+			border-radius: 50%;
+			background: linear-gradient(135deg, #eac117, #d97706);
+			box-shadow: 0 0 0 3px rgba(234, 193, 23, 0.12);
+		}
+	}
+}
+
+.contactBox {
+	margin-top: 20px;
+	padding: 16px 20px;
+	border-radius: 14px;
+	border: 1px solid rgba(234, 193, 23, 0.2);
+	background: linear-gradient(
+		120deg,
+		rgba(234, 193, 23, 0.06),
+		rgba(245, 158, 11, 0.04)
+	);
+
+	p {
+		margin: 0;
+		font-size: 0.9rem;
+		color: #94a3b8;
+	}
+
+	a {
+		color: #fcd34d;
+		font-weight: 700;
+		text-decoration: none;
+		border-bottom: 1px solid rgba(234, 193, 23, 0.3);
+		transition:
+			color 240ms ease,
+			border-color 240ms ease;
+
+		&:hover {
+			color: #eac117;
+			border-bottom-color: rgba(234, 193, 23, 0.6);
+		}
+	}
+}
+
+/* ── Reduced motion ── */
+@media (prefers-reduced-motion: reduce) {
+	.toggleBtn,
+	.backLink,
+	.sectionCard {
+		transition: none;
+	}
+}

@@ -1,0 +1,85 @@
+/* ── Animated current-flow border for glass cards ── */
+
+/* Register the CSS custom property for smooth angle animation */
+@property --eo-border-angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+.currentBorderWrap {
+  position: relative;
+  border-radius: 1rem;
+  padding: 2px;
+  overflow: hidden;
+}
+
+.currentBorderWrap::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: conic-gradient(
+    from var(--eo-border-angle, 0deg),
+    transparent 0%,
+    transparent 20%,
+    rgba(234, 193, 23, 0.65) 28%,
+    rgba(234, 193, 23, 0.9) 32%,
+    rgba(250, 204, 21, 0.5) 38%,
+    transparent 46%,
+    transparent 70%,
+    rgba(59, 130, 246, 0.4) 78%,
+    rgba(59, 130, 246, 0.6) 82%,
+    rgba(96, 165, 250, 0.3) 88%,
+    transparent 96%
+  );
+  animation: eoBorderSpin 3.6s linear infinite;
+  z-index: 0;
+}
+
+/* Glow trace trailing the current */
+.currentBorderWrap::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: conic-gradient(
+    from var(--eo-border-angle, 0deg),
+    transparent 0%,
+    transparent 24%,
+    rgba(234, 193, 23, 0.18) 30%,
+    transparent 40%,
+    transparent 74%,
+    rgba(59, 130, 246, 0.12) 80%,
+    transparent 90%
+  );
+  filter: blur(8px);
+  animation: eoBorderSpin 3.6s linear infinite;
+  z-index: 0;
+}
+
+.currentBorderInner {
+  position: relative;
+  z-index: 1;
+  border-radius: calc(1rem - 2px);
+}
+
+@keyframes eoBorderSpin {
+  to {
+    --eo-border-angle: 360deg;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .currentBorderWrap::before,
+  .currentBorderWrap::after {
+    animation: none;
+    background: conic-gradient(
+      from 45deg,
+      rgba(234, 193, 23, 0.3) 0%,
+      rgba(59, 130, 246, 0.2) 50%,
+      rgba(234, 193, 23, 0.3) 100%
+    );
+  }
+}

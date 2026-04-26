@@ -1,0 +1,158 @@
+@use '../../styles/variables' as *;
+
+/* ── Section layout ────────────────────────────────────── */
+.section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: start;
+  padding: 8px 0;
+
+  @media (max-width: 860px) {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+}
+
+.reversed {
+  direction: rtl;       // flips column order without extra markup
+
+  > * {
+    direction: ltr;     // reset text direction inside children
+  }
+
+  @media (max-width: 860px) {
+    direction: ltr;     // single-column stays normal
+  }
+}
+
+/* ── Text column ───────────────────────────────────────── */
+.text {
+  position: sticky;
+  top: 140px;
+  padding-top: 16px;
+
+  @media (max-width: 860px) {
+    position: static;
+  }
+}
+
+/* ── Card stack column ─────────────────────────────────── */
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* ── Card ──────────────────────────────────────────────── */
+.card {
+  background: $glass-bg;
+  -webkit-backdrop-filter: blur($glass-blur);
+  backdrop-filter: blur($glass-blur);
+  border: 1px solid $glass-border;
+  border-radius: $radius-lg;
+  padding: 30px 28px;
+  box-shadow:
+    0 4px 24px rgba(0, 0, 0, 0.05),
+    0 1px 3px rgba(0, 0, 0, 0.03),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  cursor: default;
+  transition: box-shadow 0.35s $ease-out-expo, border-color 0.35s $ease-out-expo;
+
+  &:hover {
+    border-color: rgba($primary, 0.12);
+  }
+}
+
+.media {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba($border, 0.7);
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.08) 0%, rgba(15, 23, 42, 0.2) 100%);
+    pointer-events: none;
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: scale(1.01);
+  }
+}
+
+/* ── Icon circle ───────────────────────────────────────── */
+.cardIcon {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: $radius-sm;
+  flex-shrink: 0;
+}
+
+.primary   { background: $primary-light;   color: $primary; }
+.secondary { background: $secondary-light; color: $secondary; }
+.emerald   { background: $emerald-light;   color: $emerald; }
+.violet    { background: $violet-light;    color: $violet; }
+.amber     { background: $amber-light;     color: $amber; }
+
+/* ── Badge ─────────────────────────────────────────────── */
+.badge {
+  display: inline-block;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 4px 12px;
+  border-radius: $radius-full;
+  width: fit-content;
+}
+
+.badgePrimary { background: $primary-light; color: $primary; }
+.badgeEmerald { background: $emerald-light; color: $emerald; }
+.badgeViolet  { background: $violet-light;  color: $violet; }
+
+/* ── Card text ─────────────────────────────────────────── */
+.cardTitle {
+  font-family: $font-heading;
+  font-size: 1.02rem;
+  font-weight: 700;
+  color: $text-heading;
+}
+
+.cardDesc {
+  font-size: 0.9rem;
+  color: $text-muted;
+  line-height: 1.7;
+}
+
+/* ── Tags ──────────────────────────────────────────────── */
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 2px;
+}
+
+.tag {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: $text-muted;
+  background: $bg-gray;
+  border-radius: $radius-full;
+  padding: 4px 12px;
+  letter-spacing: 0.03em;
+}

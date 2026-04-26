@@ -1,0 +1,359 @@
+/* ═══════════════════════════════════════════════════════════
+   Testimonials — dark premium section with radial starburst,
+   frosted carousel card, gold/amber palette
+   ═══════════════════════════════════════════════════════════ */
+
+/* ── Section ── */
+.section {
+	position: relative;
+	padding: 56px 0 40px;
+	overflow: hidden;
+	background: #06080D;
+}
+
+/* ── Radial starburst decoration (unique to Testimonials) ── */
+.starburst {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 800px;
+	height: 800px;
+	transform: translate(-50%, -50%);
+	pointer-events: none;
+	z-index: 0;
+}
+
+.starburstSvg {
+	width: 100%;
+	height: 100%;
+}
+
+/* ── Inner ── */
+.inner {
+	position: relative;
+	z-index: 2;
+	max-width: 900px;
+	margin: 0 auto;
+	padding: 0 24px;
+}
+
+/* ── Badge ── */
+.badge {
+	display: inline-flex;
+	align-items: center;
+	gap: 7px;
+	padding: 6px 15px;
+	border-radius: 999px;
+	font-size: 0.68rem;
+	font-weight: 800;
+	letter-spacing: 0.16em;
+	text-transform: uppercase;
+	color: #fcd34d;
+	background: rgba(234, 193, 23, 0.06);
+	border: 1px solid rgba(234, 193, 23, 0.18);
+	margin-bottom: 0;
+}
+
+/* ── Heading ── */
+.heading {
+	margin: 18px 0 0;
+	font-size: clamp(2rem, 4vw, 3rem);
+	font-weight: 800;
+	line-height: 1.1;
+	letter-spacing: -0.03em;
+	color: #ffffff;
+}
+
+.subtext {
+	margin: 14px auto 0;
+	max-width: 520px;
+	font-size: 1rem;
+	line-height: 1.75;
+	color: #94a3b8;
+}
+
+/* ── Main card wrapper (frosted glass) ── */
+.cardWrapper {
+	position: relative;
+	max-width: 740px;
+	margin: 0 auto;
+	border-radius: 24px;
+	padding: 20px 22px 24px;
+	background: rgba(10, 20, 44, 0.65);
+	border: 1px solid rgba(255, 255, 255, 0.06);
+	backdrop-filter: blur(18px);
+	-webkit-backdrop-filter: blur(18px);
+	box-shadow:
+		0 16px 56px rgba(0, 0, 0, 0.4),
+		inset 0 1px 0 rgba(255, 255, 255, 0.04);
+	overflow: hidden;
+
+	@media (min-width: 640px) {
+		padding: 24px 28px 28px;
+	}
+
+	@media (min-width: 768px) {
+		padding: 28px 36px 32px;
+	}
+}
+
+/* ── Large decorative quote mark ── */
+.quoteDecor {
+	position: absolute;
+	top: -8px;
+	right: 16px;
+	z-index: 0;
+	color: rgba(234, 193, 23, 0.04);
+	pointer-events: none;
+	transform: scaleX(-1);
+
+	@media (min-width: 640px) {
+		right: 28px;
+		top: -4px;
+	}
+}
+
+/* ── Controls row ── */
+.controls {
+	position: relative;
+	z-index: 2;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 12px;
+	margin-bottom: 20px;
+
+	@media (min-width: 768px) {
+		margin-bottom: 24px;
+	}
+}
+
+.feedbackBadge {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	padding: 5px 12px;
+	border-radius: 10px;
+	font-size: 0.68rem;
+	font-weight: 700;
+	letter-spacing: 0.14em;
+	text-transform: uppercase;
+	color: #EAC117;
+	background: rgba(234, 193, 23, 0.06);
+	border: 1px solid rgba(234, 193, 23, 0.14);
+
+	@media (min-width: 640px) {
+		font-size: 0.72rem;
+		padding: 6px 14px;
+	}
+}
+
+.navBtn {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 44px;
+	height: 44px;
+	border-radius: 12px;
+	border: 1px solid rgba(255, 255, 255, 0.08);
+	background: rgba(10, 20, 44, 0.5);
+	color: #94a3b8;
+	cursor: pointer;
+	transition:
+		border-color 250ms ease,
+		color 250ms ease,
+		background 250ms ease;
+
+	&:hover {
+		border-color: rgba(234, 193, 23, 0.3);
+		color: #EAC117;
+		background: rgba(234, 193, 23, 0.06);
+	}
+}
+
+/* ── Slide area ── */
+.slideArea {
+	position: relative;
+	z-index: 1;
+	min-height: 220px;
+	overflow: hidden;
+
+	@media (min-width: 640px) {
+		min-height: 200px;
+	}
+}
+
+.slide {
+	display: flex;
+	flex-direction: column;
+	gap: 0;
+	padding: 20px 18px 22px;
+	border-radius: 16px;
+	background: rgba(6, 8, 13, 0.5);
+	border: 1px solid rgba(255, 255, 255, 0.04);
+
+	@media (min-width: 640px) {
+		padding: 24px 24px 26px;
+	}
+
+	@media (min-width: 768px) {
+		padding: 28px 30px 28px;
+	}
+}
+
+/* ── Quote text ── */
+.quoteText {
+	margin: 14px 0 0;
+	font-size: 1rem;
+	line-height: 1.75;
+	color: rgba(226, 232, 240, 0.85);
+	font-weight: 500;
+	font-style: italic;
+
+	@media (min-width: 640px) {
+		font-size: 1.08rem;
+		margin-top: 16px;
+	}
+
+	@media (min-width: 768px) {
+		font-size: 1.18rem;
+		margin-top: 20px;
+	}
+}
+
+/* ── Author ── */
+.author {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	margin-top: 20px;
+	padding-top: 16px;
+	border-top: 1px solid rgba(255, 255, 255, 0.06);
+
+	@media (min-width: 640px) {
+		gap: 14px;
+		margin-top: 24px;
+		padding-top: 18px;
+	}
+}
+
+.avatar {
+	width: 44px;
+	height: 44px;
+	border-radius: 12px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-shrink: 0;
+	background: rgba(234, 193, 23, 0.08);
+	border: 1.5px solid rgba(234, 193, 23, 0.25);
+	box-shadow: 0 0 12px rgba(234, 193, 23, 0.1);
+
+	span {
+		font-size: 0.82rem;
+		font-weight: 800;
+		color: #EAC117;
+		letter-spacing: 0.02em;
+	}
+
+	@media (min-width: 640px) {
+		width: 48px;
+		height: 48px;
+	}
+}
+
+.authorName {
+	font-size: 0.88rem;
+	font-weight: 700;
+	color: #ffffff;
+
+	@media (min-width: 640px) {
+		font-size: 0.94rem;
+	}
+}
+
+.authorRole {
+	font-size: 0.76rem;
+	color: #64748b;
+	margin-top: 1px;
+
+	@media (min-width: 640px) {
+		font-size: 0.82rem;
+	}
+}
+
+/* ── Dot indicators ── */
+.dots {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 8px;
+	margin-top: 18px;
+	position: relative;
+	z-index: 2;
+
+	@media (min-width: 768px) {
+		margin-top: 22px;
+	}
+}
+
+.dot {
+	width: 9px;
+	height: 9px;
+	border-radius: 50%;
+	border: none;
+	cursor: pointer;
+	padding: 8px;
+	background-clip: content-box;
+	background-color: rgba(148, 163, 184, 0.25);
+	transition:
+		background-color 300ms ease,
+		width 300ms ease,
+		border-radius 300ms ease,
+		box-shadow 300ms ease;
+
+	&:hover {
+		background-color: rgba(148, 163, 184, 0.45);
+	}
+}
+
+.dotActive {
+	width: 28px;
+	border-radius: 999px;
+	background-color: transparent;
+	background-image: linear-gradient(135deg, #EAC117, #F59E0B);
+	background-clip: content-box;
+	box-shadow: 0 0 12px rgba(234, 193, 23, 0.3);
+}
+
+/* ── Responsive ── */
+@media (max-width: 480px) {
+	.section {
+		padding: 48px 0 56px;
+	}
+
+	.inner {
+		padding: 0 16px;
+	}
+
+	.cardWrapper {
+		border-radius: 18px;
+		padding: 16px 14px 20px;
+	}
+
+	.slide {
+		padding: 16px 14px 18px;
+	}
+
+	.starburst {
+		width: 500px;
+		height: 500px;
+	}
+}
+
+@media (max-width: 768px) {
+	.starburst {
+		width: 600px;
+		height: 600px;
+	}
+}

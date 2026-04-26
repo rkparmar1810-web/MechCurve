@@ -1,0 +1,534 @@
+/* ═══════════════════════════════════════════════════════════
+   SectionDivider v2 — Bold visible transitions + text animations
+   ═══════════════════════════════════════════════════════════ */
+
+.divider {
+	position: relative;
+	width: 100%;
+	overflow: hidden;
+	pointer-events: none;
+	z-index: 2;
+	background: #06080d;
+}
+
+/* ── Shared text styles ── */
+.textBlock {
+	position: relative;
+	z-index: 10;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 10px;
+}
+
+.textLineWrap {
+	height: 2px;
+	overflow: hidden;
+}
+
+.lineGold {
+	width: 100%;
+	height: 100%;
+	background: linear-gradient(90deg, transparent, #eac117, transparent);
+}
+
+.lineAccent {
+	width: 100%;
+	height: 100%;
+	background: linear-gradient(90deg, transparent, #3b82f6, #eac117, transparent);
+}
+
+.dividerText {
+	font-size: 0.72rem;
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 0.28em;
+	color: rgba(234, 193, 23, 0.55);
+	text-align: center;
+}
+
+.dividerSubtext {
+	font-size: 0.68rem;
+	font-weight: 500;
+	letter-spacing: 0.12em;
+	color: rgba(148, 163, 184, 0.4);
+	text-align: center;
+}
+
+/* ══════════════════════════════════════════════════════════
+   1. Cinematic Light Burst — Hero → Engineering
+   ══════════════════════════════════════════════════════════ */
+.cinematicBurst {
+	height: 220px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.burstOrb {
+	position: absolute;
+	width: 700px;
+	height: 300px;
+	border-radius: 50%;
+	background: radial-gradient(
+		ellipse at center,
+		rgba(234, 193, 23, 0.18) 0%,
+		rgba(245, 158, 11, 0.1) 30%,
+		rgba(234, 193, 23, 0.04) 55%,
+		transparent 75%
+	);
+	will-change: transform, opacity;
+}
+
+.burstRing {
+	position: absolute;
+	width: 300px;
+	height: 300px;
+	border-radius: 50%;
+	border: 1px solid rgba(234, 193, 23, 0.15);
+	will-change: transform, opacity;
+}
+
+.lightStreak {
+	position: absolute;
+	width: 100%;
+	height: 1px;
+	background: linear-gradient(
+		90deg,
+		transparent 5%,
+		rgba(234, 193, 23, 0.06) 20%,
+		rgba(234, 193, 23, 0.2) 50%,
+		rgba(234, 193, 23, 0.06) 80%,
+		transparent 95%
+	);
+	transform-origin: center;
+}
+
+.sparkDot {
+	position: absolute;
+	width: 3px;
+	height: 3px;
+	border-radius: 50%;
+	background: #eac117;
+	box-shadow: 0 0 6px rgba(234, 193, 23, 0.6);
+}
+
+/* ══════════════════════════════════════════════════════════
+   2. Fog Gradient Reveal — Engineering → About
+   ══════════════════════════════════════════════════════════ */
+.fogReveal {
+	height: 200px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.fogWide1 {
+	position: absolute;
+	inset: -20% 0;
+	background: radial-gradient(
+		ellipse 90% 120% at 25% 50%,
+		rgba(10, 20, 44, 0.7),
+		transparent
+	);
+	filter: blur(30px);
+	will-change: transform, opacity;
+}
+
+.fogWide2 {
+	position: absolute;
+	inset: -20% 0;
+	background: radial-gradient(
+		ellipse 80% 100% at 75% 50%,
+		rgba(10, 20, 44, 0.5),
+		transparent
+	);
+	filter: blur(24px);
+	will-change: transform, opacity;
+}
+
+.fogGoldMist {
+	position: absolute;
+	inset: 10% 20%;
+	background: radial-gradient(
+		ellipse at center,
+		rgba(234, 193, 23, 0.04),
+		transparent 70%
+	);
+	filter: blur(20px);
+}
+
+.fogLine {
+	position: absolute;
+	left: 10%;
+	right: 10%;
+	height: 1px;
+	background: linear-gradient(
+		90deg,
+		transparent,
+		rgba(255, 255, 255, 0.04) 30%,
+		rgba(234, 193, 23, 0.08) 50%,
+		rgba(255, 255, 255, 0.04) 70%,
+		transparent
+	);
+	transform-origin: center;
+}
+
+/* ══════════════════════════════════════════════════════════
+   3. Energy Line Sweep — About → Services
+   ══════════════════════════════════════════════════════════ */
+.energySweep {
+	height: 180px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.sweepTrail {
+	position: absolute;
+	top: 50%;
+	left: 0;
+	height: 1px;
+	background: linear-gradient(
+		90deg,
+		rgba(234, 193, 23, 0.06),
+		rgba(234, 193, 23, 0.1)
+	);
+}
+
+.sweepBeam {
+	position: absolute;
+	width: 25%;
+	height: 3px;
+	background: linear-gradient(
+		90deg,
+		transparent,
+		rgba(59, 130, 246, 0.4) 15%,
+		#eac117 50%,
+		rgba(59, 130, 246, 0.4) 85%,
+		transparent
+	);
+	box-shadow:
+		0 0 20px rgba(234, 193, 23, 0.4),
+		0 0 60px rgba(234, 193, 23, 0.15),
+		0 0 100px rgba(59, 130, 246, 0.08);
+	will-change: transform, opacity;
+}
+
+.sweepGlow {
+	position: absolute;
+	inset: 20% 0;
+	background: radial-gradient(
+		ellipse 100% 80% at center,
+		rgba(234, 193, 23, 0.02),
+		transparent
+	);
+}
+
+/* ══════════════════════════════════════════════════════════
+   4. Morphing Shape — Services → Portfolio
+   ══════════════════════════════════════════════════════════ */
+.morphShape {
+	height: 200px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.morphSvg {
+	position: absolute;
+	bottom: 0;
+	left: -5%;
+	width: 110%;
+	height: 100%;
+	will-change: transform, opacity;
+	transform-origin: center center;
+}
+
+.morphCenterLine {
+	position: absolute;
+	top: 38%;
+	left: 15%;
+	right: 15%;
+	height: 1px;
+	background: linear-gradient(
+		90deg,
+		transparent,
+		rgba(234, 193, 23, 0.15) 30%,
+		rgba(234, 193, 23, 0.25) 50%,
+		rgba(234, 193, 23, 0.15) 70%,
+		transparent
+	);
+	transform-origin: center;
+}
+
+/* ══════════════════════════════════════════════════════════
+   5. Glass Panel — Portfolio → Testimonials
+   ══════════════════════════════════════════════════════════ */
+.glassPanel {
+	height: 200px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.glassBar {
+	position: absolute;
+	inset: 25% 5%;
+	border-radius: 16px;
+	background: rgba(10, 20, 44, 0.5);
+	border: 1px solid rgba(255, 255, 255, 0.06);
+	backdrop-filter: blur(12px);
+	-webkit-backdrop-filter: blur(12px);
+	overflow: hidden;
+	transform-origin: center;
+}
+
+.glassShimmer {
+	position: absolute;
+	top: -50%;
+	left: -50%;
+	width: 200%;
+	height: 200%;
+	background: linear-gradient(
+		105deg,
+		transparent 40%,
+		rgba(234, 193, 23, 0.04) 45%,
+		rgba(255, 255, 255, 0.06) 50%,
+		rgba(234, 193, 23, 0.04) 55%,
+		transparent 60%
+	);
+	animation: glassShimmerMove 4s ease-in-out infinite;
+}
+
+@keyframes glassShimmerMove {
+	0% {
+		transform: translateX(-60%) translateY(-20%);
+	}
+	100% {
+		transform: translateX(60%) translateY(20%);
+	}
+}
+
+.glassEdgeTop,
+.glassEdgeBottom {
+	position: absolute;
+	left: 10%;
+	right: 10%;
+	height: 1px;
+	background: linear-gradient(
+		90deg,
+		transparent,
+		rgba(234, 193, 23, 0.1) 50%,
+		transparent
+	);
+}
+
+.glassEdgeTop {
+	top: 24%;
+}
+
+.glassEdgeBottom {
+	bottom: 24%;
+}
+
+/* ══════════════════════════════════════════════════════════
+   6. Split Panel — Testimonials → FAQ
+   ══════════════════════════════════════════════════════════ */
+.splitPanel {
+	height: 200px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.splitLeft,
+.splitRight {
+	position: absolute;
+	top: 0;
+	width: 50%;
+	height: 100%;
+	will-change: transform;
+}
+
+.splitLeft {
+	left: 0;
+	background: linear-gradient(
+		90deg,
+		#06080d,
+		rgba(10, 20, 44, 0.6)
+	);
+	border-right: 1px solid rgba(234, 193, 23, 0.08);
+}
+
+.splitRight {
+	right: 0;
+	background: linear-gradient(
+		270deg,
+		#06080d,
+		rgba(10, 20, 44, 0.6)
+	);
+	border-left: 1px solid rgba(234, 193, 23, 0.08);
+}
+
+.splitCenterStrip {
+	position: absolute;
+	inset: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.splitCenterGlow {
+	width: 2px;
+	height: 60%;
+	background: linear-gradient(
+		180deg,
+		transparent,
+		rgba(234, 193, 23, 0.3) 30%,
+		rgba(234, 193, 23, 0.5) 50%,
+		rgba(234, 193, 23, 0.3) 70%,
+		transparent
+	);
+	box-shadow:
+		0 0 20px rgba(234, 193, 23, 0.2),
+		0 0 40px rgba(234, 193, 23, 0.05);
+}
+
+/* ══════════════════════════════════════════════════════════
+   7. Perspective Tilt — FAQ → Contact
+   ══════════════════════════════════════════════════════════ */
+.perspectiveTilt {
+	height: 180px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	perspective: 800px;
+}
+
+.tiltPlane {
+	position: absolute;
+	inset: 15% 0;
+	will-change: transform;
+	transform-style: preserve-3d;
+}
+
+.tiltSurface {
+	position: absolute;
+	inset: 0;
+	background: linear-gradient(
+		180deg,
+		rgba(10, 20, 44, 0.3),
+		rgba(6, 8, 13, 0.6)
+	);
+	border-top: 1px solid rgba(255, 255, 255, 0.04);
+	border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.tiltShadow {
+	position: absolute;
+	bottom: -30%;
+	left: 10%;
+	right: 10%;
+	height: 50%;
+	background: radial-gradient(
+		ellipse at center,
+		rgba(0, 0, 0, 0.4),
+		transparent
+	);
+	filter: blur(20px);
+}
+
+.tiltEdge {
+	position: absolute;
+	top: 50%;
+	left: 10%;
+	right: 10%;
+	height: 1px;
+	background: linear-gradient(
+		90deg,
+		transparent,
+		rgba(234, 193, 23, 0.12) 20%,
+		rgba(234, 193, 23, 0.25) 50%,
+		rgba(234, 193, 23, 0.12) 80%,
+		transparent
+	);
+	transform-origin: center;
+	z-index: 5;
+}
+
+/* ── Reduced motion ── */
+@media (prefers-reduced-motion: reduce) {
+	.burstOrb,
+	.burstRing,
+	.lightStreak,
+	.sparkDot,
+	.fogWide1,
+	.fogWide2,
+	.sweepBeam,
+	.sweepTrail,
+	.morphSvg,
+	.glassBar,
+	.splitLeft,
+	.splitRight,
+	.tiltPlane {
+		animation: none !important;
+		transition: none !important;
+		will-change: auto;
+	}
+
+	.glassShimmer {
+		animation: none;
+		opacity: 0.3;
+	}
+}
+
+/* ── Mobile responsive ── */
+@media (max-width: 640px) {
+	.cinematicBurst {
+		height: 140px;
+	}
+
+	.burstOrb {
+		width: 350px;
+		height: 150px;
+	}
+
+	.burstRing {
+		width: 180px;
+		height: 180px;
+	}
+
+	.fogReveal {
+		height: 130px;
+	}
+
+	.energySweep {
+		height: 120px;
+	}
+
+	.morphShape {
+		height: 130px;
+	}
+
+	.glassPanel {
+		height: 130px;
+	}
+
+	.splitPanel {
+		height: 130px;
+	}
+
+	.perspectiveTilt {
+		height: 120px;
+	}
+
+	.dividerText {
+		font-size: 0.62rem;
+		letter-spacing: 0.22em;
+	}
+
+	.dividerSubtext {
+		font-size: 0.58rem;
+	}
+}

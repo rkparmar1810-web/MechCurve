@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Sitemap: https://design-maniach-aiew.vercel.app/sitemap.xml
+Host: design-maniach-aiew.vercel.app
