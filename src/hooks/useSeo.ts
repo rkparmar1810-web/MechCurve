@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 
-const SITE_URL = 'https://design-maniach-aiew.vercel.app';
+const SITE_URL = 'https://mechcurve.vercel.app';
 const DEFAULT_IMAGE = `${SITE_URL}/logo.png`;
 
 interface SeoOptions {
