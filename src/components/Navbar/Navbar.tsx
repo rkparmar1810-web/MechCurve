@@ -66,21 +66,21 @@ export default function Navbar() {
 			<div className="max-w-[1440px] mx-auto px-6 md:px-8 py-4 flex items-center justify-between gap-6">
 				<Link
 					to="/"
-					className="flex items-center gap-3 hover:opacity-90 transition-opacity"
+					className="flex items-center gap-2 min-w-0 flex-1 hover:opacity-90 transition-opacity"
 				>
 					<img
 						src="/logo.png"
 						alt="MechCurve"
 						className="h-10 sm:h-12 w-auto flex-shrink-0"
 					/>
-					<div className="hidden sm:block text-left">
+					<div className="flex flex-col text-left min-w-0">
 						<span
-							className="block font-extrabold leading-none tracking-tight text-lg transition-colors duration-500 text-white"
+							className="block font-extrabold leading-none tracking-tight text-base sm:text-lg transition-colors duration-500 text-white truncate max-w-[120px] xs:max-w-[160px] sm:max-w-none"
 						>
 							MechCurve
 						</span>
 						<span
-							className="block text-[10px] font-semibold uppercase tracking-[0.2em] mt-0.5 transition-colors duration-500 text-slate-400"
+							className="hidden sm:block text-[10px] font-semibold uppercase tracking-[0.2em] mt-0.5 transition-colors duration-500 text-slate-400"
 						>
 							Engineering Solutions
 						</span>
