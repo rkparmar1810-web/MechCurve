@@ -172,19 +172,41 @@
 	}
 }
 
-/* ── Service list ── */
-.serviceList {
-	list-style: none;
-	padding: 0;
-	margin: 0;
+/* ── Download links ── */
+.downloadList {
 	display: flex;
 	flex-direction: column;
 	gap: 8px;
+}
+
+.downloadLink {
+	position: relative;
+	display: inline-flex;
+	align-items: center;
+	min-height: 44px;
+	padding: 8px 0;
 	font-size: 0.88rem;
 	color: #64748b;
+	text-decoration: none;
+	transition: color 250ms ease;
 
-	li {
-		line-height: 1.5;
+	&::after {
+		content: '';
+		position: absolute;
+		bottom: -2px;
+		left: 0;
+		width: 0;
+		height: 1px;
+		background: #eac117;
+		transition: width 300ms cubic-bezier(0.22, 1, 0.36, 1);
+	}
+
+	&:hover {
+		color: #eac117;
+
+		&::after {
+			width: 100%;
+		}
 	}
 }
 

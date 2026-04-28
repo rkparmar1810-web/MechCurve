@@ -2,7 +2,7 @@ import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import useSectionNavigation from '../../hooks/useSectionNavigation';
-import { LuLinkedin, LuMail, LuInstagram } from 'react-icons/lu';
+import { LuLinkedin, LuMail, LuInstagram, LuYoutube } from 'react-icons/lu';
 import styles from './Footer.module.scss';
 
 const EASE = [0.22, 1, 0.36, 1] as const;
@@ -16,11 +16,17 @@ const NAV_LINKS = [
 	{ label: 'Contact', id: 'contact' },
 ];
 
-const SERVICE_ITEMS = [
-	'CAD Design',
-	'SolidWorks Training',
-	'Product Design',
-	'Engineering Mentorship',
+const DOWNLOADS = [
+	{
+		label: 'MechCurve Brochure',
+		href: '/PDF/MechCurve_brochure.pdf',
+		download: 'MechCurve_brochure.pdf',
+	},
+	{
+		label: 'MechCurve Catalog',
+		href: '/PDF/MechCurve_Catalog.pdf',
+		download: 'MechCurve_Catalog.pdf',
+	},
 ];
 
 const SOCIALS = [
@@ -40,6 +46,12 @@ const SOCIALS = [
 		href: 'https://www.instagram.com/design_maniach?igsh=MTBhODZ6Y2swcjdyYg==',
 		icon: LuInstagram,
 		title: 'Instagram',
+		external: true,
+	},
+	{
+		href: 'https://youtube.com/@swsimplified',
+		icon: LuYoutube,
+		title: 'YouTube',
 		external: true,
 	},
 ];
@@ -182,25 +194,32 @@ export default function Footer() {
 						</nav>
 					</motion.div>
 
-					{/* Services column */}
+					{/* Downloads column */}
 					<motion.div
 						initial={{ opacity: 0, y: 18 }}
 						animate={inView ? { opacity: 1, y: 0 } : {}}
-						transition={{ duration: 0.5, ease: EASE, delay: 0.16 }}
+						transition={{ duration: 0.5, ease: EASE, delay: 0.22 }}
 					>
-						<h4 className={styles.colHeading}>Services</h4>
-						<ul className={styles.serviceList}>
-							{SERVICE_ITEMS.map((s) => (
-								<li key={s}>{s}</li>
+						<h4 className={styles.colHeading}>Downloads</h4>
+						<div className={styles.downloadList}>
+							{DOWNLOADS.map((d) => (
+								<a
+									key={d.href}
+									href={d.href}
+									download={d.download}
+									className={styles.downloadLink}
+								>
+									{d.label}
+								</a>
 							))}
-						</ul>
+						</div>
 					</motion.div>
 
 					{/* Social column */}
 					<motion.div
 						initial={{ opacity: 0, y: 18 }}
 						animate={inView ? { opacity: 1, y: 0 } : {}}
-						transition={{ duration: 0.5, ease: EASE, delay: 0.24 }}
+						transition={{ duration: 0.5, ease: EASE, delay: 0.28 }}
 					>
 						<h4 className={styles.colHeading}>Connect</h4>
 						<div className={styles.socialRow}>
