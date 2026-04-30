@@ -63,10 +63,10 @@ export default function Navbar() {
 					: 'bg-transparent border-transparent'
 			}`}
 		>
-			<div className="max-w-[1440px] mx-auto px-6 md:px-8 py-4 flex items-center justify-between gap-6">
+			<div className="max-w-[1440px] mx-auto px-6 md:px-8 py-4 flex items-center gap-6">
 				<Link
 					to="/"
-					className="flex items-center gap-2 min-w-0 flex-1 hover:opacity-90 transition-opacity"
+					className="flex items-center gap-2 min-w-0 hover:opacity-90 transition-opacity shrink-0"
 				>
 					<img
 						src="/logo.png"
@@ -87,28 +87,34 @@ export default function Navbar() {
 					</div>
 				</Link>
 
-				<nav
-					className={`hidden md:flex items-center gap-2 rounded-xl px-3 py-2 transition-all duration-500 ${solid ? 'border border-white/[0.08] bg-white/[0.04] backdrop-blur-md' : 'border border-white/[0.08] bg-white/[0.04] backdrop-blur-md'}`}
-				>
-					{LINKS.map((l) => (
-						<button
-							key={l.label}
-							onClick={() => {
-								navigateToSection(l.id);
-							}}
-							className={`rounded-lg px-4 py-2 transition-all duration-300 text-sm font-medium border-0 cursor-pointer ${
-								activeSection === l.id
-									? 'text-[#EAC117] bg-white/[0.08]'
-									: 'text-slate-400 bg-transparent hover:text-[#EAC117] hover:bg-white/[0.06]'
-							}`}
-							type="button"
-						>
-							{l.label}
-						</button>
-					))}
-				</nav>
+				<div className="flex-1 hidden md:flex justify-center">
+					<nav
+						className={`flex items-center gap-2 rounded-xl px-3 py-2 transition-all duration-500 ${
+							solid
+								? 'border border-white/[0.08] bg-white/[0.04] backdrop-blur-md'
+								: 'border border-white/[0.08] bg-white/[0.04] backdrop-blur-md'
+						}`}
+					>
+						{LINKS.map((l) => (
+							<button
+								key={l.label}
+								onClick={() => {
+									navigateToSection(l.id);
+								}}
+								className={`rounded-lg px-4 py-2 transition-all duration-300 text-sm font-medium border-0 cursor-pointer ${
+									activeSection === l.id
+										? 'text-[#EAC117] bg-white/[0.08]'
+										: 'text-slate-400 bg-transparent hover:text-[#EAC117] hover:bg-white/[0.06]'
+								}`}
+								type="button"
+							>
+								{l.label}
+							</button>
+						))}
+					</nav>
+				</div>
 
-				<div className="flex items-center gap-4">
+				<div className="flex items-center gap-4 shrink-0">
 					<a
 						href="mailto:admin@mechcurve.com"
 						className="hidden md:inline-flex items-center gap-2 rounded-xl px-5 py-2.5 text-sm font-semibold text-[#06080D] transition-all duration-300 bg-gradient-to-r from-[#EAC117] to-[#F59E0B] shadow-[0_4px_20px_rgba(234,193,23,0.25)] hover:shadow-[0_6px_28px_rgba(234,193,23,0.4)] hover:-translate-y-0.5"
