@@ -43,7 +43,7 @@ export default function ImmersiveDetailPage({ type }: Props) {
 		robots: data ? 'index, follow' : 'noindex, nofollow',
 	});
 
-	const siteUrl = 'https://mechcurve.vercel.app';
+	const siteUrl = 'https://mechcurve.com';
 	const pagePath = slug
 		? `/${type === 'service' ? 'services' : 'projects'}/${slug}`
 		: fallbackPath;

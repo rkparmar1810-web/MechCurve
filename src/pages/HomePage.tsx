@@ -19,7 +19,7 @@ import useStructuredData from '../hooks/useStructuredData';
 export default function HomePage() {
 	const { pathname } = useLocation();
 	useSectionNavigation();
-	const siteUrl = 'https://mechcurve.vercel.app';
+	const siteUrl = 'https://mechcurve.com';
 
 	const seoByPath: Record<string, { title: string; description: string }> = {
 		'/': {
