@@ -43,7 +43,7 @@ const SOCIALS = [
 		external: true,
 	},
 	{
-		href: 'https://www.instagram.com/design_maniach?igsh=MTBhODZ6Y2swcjdyYg==',
+		href: 'https://www.instagram.com/mc3d_m/',
 		icon: LuInstagram,
 		title: 'Instagram',
 		external: true,

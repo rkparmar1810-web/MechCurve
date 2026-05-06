@@ -63,7 +63,7 @@ export default function Navbar() {
 					: 'bg-transparent border-transparent'
 			}`}
 		>
-			<div className="max-w-[1440px] mx-auto px-6 md:px-8 py-4 flex items-center gap-6">
+			<div className="max-w-[1440px] mx-auto px-4 sm:px-6 md:px-8 py-3 sm:py-4 flex items-center justify-between gap-4">
 				<Link
 					to="/"
 					className="flex items-center gap-2 min-w-0 hover:opacity-90 transition-opacity shrink-0"
@@ -71,16 +71,16 @@ export default function Navbar() {
 					<img
 						src="/logo.png"
 						alt="MechCurve"
-						className="h-10 sm:h-12 w-auto flex-shrink-0"
+						className="h-9 sm:h-10 md:h-12 w-auto flex-shrink-0"
 					/>
 					<div className="flex flex-col text-left min-w-0">
 						<span
-							className="block font-extrabold leading-none tracking-tight text-base sm:text-lg transition-colors duration-500 text-white truncate max-w-[120px] xs:max-w-[160px] sm:max-w-none"
+							className="block font-extrabold leading-none tracking-tight text-sm sm:text-base md:text-lg transition-colors duration-500 text-white truncate max-w-[100px] xs:max-w-[140px] sm:max-w-[160px] md:max-w-none"
 						>
 							MechCurve
 						</span>
 						<span
-							className="hidden sm:block text-[10px] font-semibold uppercase tracking-[0.2em] mt-0.5 transition-colors duration-500 text-slate-400"
+							className="hidden sm:block text-[9px] sm:text-[10px] font-semibold uppercase tracking-[0.15em] sm:tracking-[0.2em] mt-0.5 transition-colors duration-500 text-slate-400"
 						>
 							Engineering Solutions
 						</span>
@@ -114,7 +114,7 @@ export default function Navbar() {
 					</nav>
 				</div>
 
-				<div className="flex items-center gap-4 shrink-0">
+				<div className="flex items-center gap-3 sm:gap-4 shrink-0">
 					<a
 						href="mailto:admin@mechcurve.com"
 						className="hidden md:inline-flex items-center gap-2 rounded-xl px-5 py-2.5 text-sm font-semibold text-[#06080D] transition-all duration-300 bg-gradient-to-r from-[#EAC117] to-[#F59E0B] shadow-[0_4px_20px_rgba(234,193,23,0.25)] hover:shadow-[0_6px_28px_rgba(234,193,23,0.4)] hover:-translate-y-0.5"
@@ -124,10 +124,10 @@ export default function Navbar() {
 
 					<button
 						onClick={() => setOpen(!open)}
-						className="md:hidden rounded-lg p-2.5 transition-colors border border-white/[0.1] bg-white/[0.05] text-slate-300 hover:text-[#EAC117] hover:bg-white/[0.08]"
+						className="md:hidden rounded-lg p-2 sm:p-2.5 transition-colors border border-white/[0.1] bg-white/[0.05] text-slate-300 hover:text-[#EAC117] hover:bg-white/[0.08]"
 						aria-label="Toggle menu"
 					>
-						{open ? <LuX size={24} /> : <LuMenu size={24} />}
+						{open ? <LuX size={22} /> : <LuMenu size={22} />}
 					</button>
 				</div>
 			</div>
@@ -141,8 +141,7 @@ export default function Navbar() {
 						exit={{ opacity: 0, height: 0 }}
 						transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
 					>
-						{' '}
-						<div className="max-w-[1440px] mx-auto px-6 py-4 space-y-3">
+						<div className="px-4 sm:px-6 py-3 sm:py-4 space-y-2 sm:space-y-3">
 							{LINKS.map((l) => (
 								<button
 									key={l.label}
@@ -150,7 +149,7 @@ export default function Navbar() {
 										navigateToSection(l.id);
 										setOpen(false);
 									}}
-									className={`block rounded-xl border px-4 py-3 transition-colors duration-300 w-full text-left cursor-pointer ${
+									className={`block rounded-lg border px-3 sm:px-4 py-2.5 sm:py-3 transition-colors duration-300 w-full text-left cursor-pointer text-sm sm:text-base font-medium ${
 										activeSection === l.id
 											? 'text-[#EAC117] border-[#EAC117]/25 bg-[#EAC117]/[0.08]'
 											: 'text-slate-400 border-white/[0.06] bg-white/[0.03] hover:text-[#EAC117] hover:border-[#EAC117]/20'
@@ -162,7 +161,7 @@ export default function Navbar() {
 							))}
 							<a
 								href="mailto:admin@mechcurve.com"
-									className="block text-center mt-4 rounded-xl px-4 py-3 text-sm font-semibold text-[#06080D] bg-gradient-to-r from-[#EAC117] to-[#F59E0B] shadow-[0_4px_20px_rgba(234,193,23,0.25)]"
+								className="block text-center mt-2 sm:mt-4 rounded-lg px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base font-semibold text-[#06080D] bg-gradient-to-r from-[#EAC117] to-[#F59E0B] shadow-[0_4px_20px_rgba(234,193,23,0.25)] hover:shadow-[0_6px_28px_rgba(234,193,23,0.35)]"
 								onClick={() => setOpen(false)}
 							>
 								Get in Touch
