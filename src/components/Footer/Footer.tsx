@@ -160,7 +160,7 @@ export default function Footer() {
 						<div className={styles.logoRow}>
 							<div className={styles.logoWrap}>
 								<img
-									src="/logo.png"
+									src="/logo.webp"
 									alt="MechCurve"
 									className={styles.logoImg}
 								/>

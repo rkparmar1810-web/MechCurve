@@ -24,7 +24,7 @@ const CARDS = [
 		subtitle: 'Parametric Precision',
 		description:
 			'End-to-end parametric modeling with feature-tree discipline, reference geometry standards, and assembly-level interlocking tolerances.',
-		image: '/DM/modelling structure.png',
+		image: '/DM/modelling structure.webp',
 		imageAlt: 'Workflow and modeling structure CAD assembly',
 		badges: ['Parametric Geometry', 'Interlocking Tolerances'],
 	},

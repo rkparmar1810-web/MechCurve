@@ -20,7 +20,7 @@ export default function FeaturedProject() {
         <FadeIn delay={0.08}>
           <article className={`card-base ${styles.featuredCard}`}>
             <div className={styles.mediaWrap}>
-              <img src="/pp/qhSa4.jpg" alt="Featured pneumatic fixture CAD and fabrication view" loading="lazy" />
+              <img src="/portfolio_images/Metro_Electromagnetic_Brake_Assembly_1.webp" alt="Featured pneumatic fixture CAD and fabrication view" loading="lazy" />
             </div>
             <div className={styles.content}>
               <span className="card-tag">Fabrication + Design</span>

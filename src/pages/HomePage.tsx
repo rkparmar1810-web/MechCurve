@@ -58,7 +58,7 @@ export default function HomePage() {
 		'@type': 'Organization',
 		name: 'MechCurve',
 		url: siteUrl,
-		logo: `${siteUrl}/logo.png`,
+		logo: `${siteUrl}/logo.webp`,
 		email: 'admin@mechcurve.com',
 		sameAs: [
 			'https://www.linkedin.com/company/design-maniach/',
@@ -103,8 +103,8 @@ export default function HomePage() {
 		'@type': 'LocalBusiness',
 		name: 'MechCurve',
 		url: siteUrl,
-		logo: `${siteUrl}/logo.png`,
-		image: `${siteUrl}/logo.png`,
+		logo: `${siteUrl}/logo.webp`,
+		image: `${siteUrl}/logo.webp`,
 		email: 'admin@mechcurve.com',
 		telephone: '+91 91062 97853',
 		address: {

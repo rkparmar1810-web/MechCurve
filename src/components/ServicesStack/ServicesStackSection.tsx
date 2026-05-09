@@ -26,7 +26,7 @@ const SERVICES: Service[] = [
 			'Parametric modeling',
 			'2D drafting & documentation',
 		],
-		image: '/DM/pd_1.jpg',
+		image: '/DM/pd_1.webp',
 	},
 	{
 		id: 2,
@@ -40,7 +40,7 @@ const SERVICES: Service[] = [
 			'Rapid prototyping & 3D printing',
 			'Reverse engineering',
 		],
-		image: '/DM/pd_4.jpg',
+		image: '/DM/pd_4.webp',
 	},
 	{
 		id: 3,
@@ -54,7 +54,7 @@ const SERVICES: Service[] = [
 			'Heat treatment & finishing',
 			'CMM inspection & quality control',
 		],
-		image: '/DM/Manufacturing.png',
+		image: '/DM/Manufacturing.webp',
 	},
 	{
 		id: 4,
@@ -68,7 +68,7 @@ const SERVICES: Service[] = [
 			'Project-based learning',
 			'Placement assistance',
 		],
-		image: '/DM/training_2.jpg',
+		image: '/DM/training_2.webp',
 	},
 ];
 

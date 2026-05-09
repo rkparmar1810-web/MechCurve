@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
-Sitemap: https://mechcurve.vercel.app/sitemap.xml
-Host: mechcurve.vercel.app
+Sitemap: https://mechcurve.com/sitemap.xml
+Host: mechcurve.com

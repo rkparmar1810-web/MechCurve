@@ -1,7 +1,8 @@
 import { useEffect } from 'react';
 
-const SITE_URL = 'https://mechcurve.com';
-const DEFAULT_IMAGE = `${SITE_URL}/logo.png`;
+import { SITE_URL } from '../seo/site';
+
+const DEFAULT_IMAGE = `${SITE_URL}/logo.webp`;
 
 interface SeoOptions {
 	title: string;

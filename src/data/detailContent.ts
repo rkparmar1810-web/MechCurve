@@ -150,7 +150,7 @@ export const projectCards: ProjectCard[] = [
 		title: 'Sheet Metal Housing Cover',
 		desc: 'Sheet metal CPU enclosure designed in SolidWorks with bend control, fabrication constraints, and manufacturing-ready detailing.',
 		meta: ['SolidWorks', 'Sheet Metal', 'Manufacturing Drawing'],
-		image: '/portfolio_images/Sheet_Metal_Housing_Cover_1.png',
+		image: '/portfolio_images/Sheet_Metal_Housing_Cover_1.webp',
 		imagePosition: 'center top',
 	},
 	{
@@ -159,7 +159,7 @@ export const projectCards: ProjectCard[] = [
 		title: 'Parametric Modelling and Design - Metro Brake Assembly',
 		desc: 'Reverse engineered metro electromagnetic brake assembly developed in SolidWorks with a fully parametric structure and production-focused detailing.',
 		meta: ['SolidWorks Assembly', 'Reverse Engineering', 'CNC Ready'],
-		image: '/portfolio_images/Metro_Electromagnetic_Brake_Assembly_1.png',
+		image: '/portfolio_images/Metro_Electromagnetic_Brake_Assembly_1.webp',
 		imagePosition: 'center top',
 	},
 	{
@@ -168,7 +168,7 @@ export const projectCards: ProjectCard[] = [
 		title: 'Industrial Load Carrying Trolley',
 		desc: 'Heavy-duty industrial trolley developed in SolidWorks weldments for strength, stability, and ergonomic material handling.',
 		meta: ['Weldments', 'Motion Analysis', 'Industrial Fabrication'],
-		image: '/portfolio_images/Industrial_Load_Carrying_Trolley_1.png',
+		image: '/portfolio_images/Industrial_Load_Carrying_Trolley_1.webp',
 		imagePosition: 'center top',
 	},
 	{
@@ -177,7 +177,7 @@ export const projectCards: ProjectCard[] = [
 		title: 'Parametric Combination Spanner - SolidWorks',
 		desc: 'Parameter-driven combination spanner for industrial and workshop use, built to adapt across multiple bolt sizes.',
 		meta: ['Global Variables', 'Equations', 'Scalable Geometry'],
-		image: '/portfolio_images/Parametric_Combination_Spanner_0.png',
+		image: '/portfolio_images/Parametric_Combination_Spanner_0.webp',
 		imagePosition: 'center top',
 	},
 ];
@@ -202,8 +202,8 @@ export const projectDetails: Record<string, ProjectDetail> = {
 			'Laser-cut and bend-ready output',
 			'Flat-pattern fabrication workflow',
 		],
-		cardImage: '/portfolio_images/Sheet_Metal_Housing_Cover_1.png',
-		heroImage: '/portfolio_images/Sheet_Metal_Housing_Cover_1.png',
+		cardImage: '/portfolio_images/Sheet_Metal_Housing_Cover_1.webp',
+		heroImage: '/portfolio_images/Sheet_Metal_Housing_Cover_1.webp',
 		highlights: [
 			'CPU enclosure cover',
 			'Bend-controlled design',
@@ -211,13 +211,13 @@ export const projectDetails: Record<string, ProjectDetail> = {
 		],
 		gallery: [
 			{
-				src: '/portfolio_images/Sheet_Metal_Housing_Cover_1.png',
+				src: '/portfolio_images/Sheet_Metal_Housing_Cover_1.webp',
 				alt: 'Sheet metal housing cover render',
 				caption:
 					'Primary SolidWorks model showing formed geometry and perforated center section.',
 			},
 			{
-				src: '/portfolio_images/Sheet_Metal_Housing_Cover_2.png',
+				src: '/portfolio_images/Sheet_Metal_Housing_Cover_2.webp',
 				alt: 'Sheet metal housing cover drawing',
 				caption:
 					'Detailed manufacturing sheet with dimensions, feature callouts, and sectional details.',
@@ -263,8 +263,8 @@ export const projectDetails: Record<string, ProjectDetail> = {
 			'Metro and railway application',
 			'Detailed manufacturing drawings',
 		],
-		cardImage: '/portfolio_images/Metro_Electromagnetic_Brake_Assembly_1.png',
-		heroImage: '/portfolio_images/Metro_Electromagnetic_Brake_Assembly_1.png',
+		cardImage: '/portfolio_images/Metro_Electromagnetic_Brake_Assembly_1.webp',
+		heroImage: '/portfolio_images/Metro_Electromagnetic_Brake_Assembly_1.webp',
 		highlights: [
 			'Parametric assembly structure',
 			'Functional clearances',
@@ -272,19 +272,19 @@ export const projectDetails: Record<string, ProjectDetail> = {
 		],
 		gallery: [
 			{
-				src: '/portfolio_images/Metro_Electromagnetic_Brake_Assembly_1.png',
+				src: '/portfolio_images/Metro_Electromagnetic_Brake_Assembly_1.webp',
 				alt: 'Metro electromagnetic brake render',
 				caption:
 					'Finished assembly render showing the complete brake component stack.',
 			},
 			{
-				src: '/portfolio_images/Metro_Electromagnetic_Brake_Assembly_2.png',
+				src: '/portfolio_images/Metro_Electromagnetic_Brake_Assembly_2.webp',
 				alt: 'Metro electromagnetic brake exploded drawing',
 				caption:
 					'Exploded drawing sheet with parts identification and assembly arrangement.',
 			},
 			{
-				src: '/portfolio_images/Metro_Electromagnetic_Brake_Assembly_3.png',
+				src: '/portfolio_images/Metro_Electromagnetic_Brake_Assembly_3.webp',
 				alt: 'Metro electromagnetic brake orthographic views',
 				caption:
 					'Multi-view SolidWorks workspace used to confirm alignment and assembly structure.',
@@ -330,8 +330,8 @@ export const projectDetails: Record<string, ProjectDetail> = {
 			'Manufacturing-ready for industrial fabrication',
 			'Stable handling performance',
 		],
-		cardImage: '/portfolio_images/Industrial_Load_Carrying_Trolley_1.png',
-		heroImage: '/portfolio_images/Industrial_Load_Carrying_Trolley_1.png',
+		cardImage: '/portfolio_images/Industrial_Load_Carrying_Trolley_1.webp',
+		heroImage: '/portfolio_images/Industrial_Load_Carrying_Trolley_1.webp',
 		highlights: [
 			'Load-bearing design',
 			'Weldment frame',
@@ -339,13 +339,13 @@ export const projectDetails: Record<string, ProjectDetail> = {
 		],
 		gallery: [
 			{
-				src: '/portfolio_images/Industrial_Load_Carrying_Trolley_1.png',
+				src: '/portfolio_images/Industrial_Load_Carrying_Trolley_1.webp',
 				alt: 'Industrial trolley render',
 				caption:
 					'Concept render of the welded trolley showing load platform, frame, and wheel placement.',
 			},
 			{
-				src: '/portfolio_images/Industrial_Load_Carrying_Trolley_2.png',
+				src: '/portfolio_images/Industrial_Load_Carrying_Trolley_2.webp',
 				alt: 'Industrial trolley CAD views',
 				caption:
 					'Front, side, top, and isometric views used to verify balance and motion behavior.',
@@ -391,8 +391,8 @@ export const projectDetails: Record<string, ProjectDetail> = {
 			'Multiple bolt-size adaptability',
 			'Advanced parametric modeling workflow',
 		],
-		cardImage: '/portfolio_images/Parametric Combination Spanner_2.jpg',
-		heroImage: '/portfolio_images/Parametric Combination Spanner_2.jpg',
+		cardImage: '/portfolio_images/Parametric Combination Spanner_2.webp',
+		heroImage: '/portfolio_images/Parametric Combination Spanner_2.webp',
 		highlights: [
 			'Bolt-size adaptability',
 			'Equation-driven updates',
@@ -400,13 +400,13 @@ export const projectDetails: Record<string, ProjectDetail> = {
 		],
 		gallery: [
 			{
-				src: '/portfolio_images/Parametric Combination Spanner_2.jpg',
+				src: '/portfolio_images/Parametric Combination Spanner_2.webp',
 				alt: 'Parametric spanner isometric model',
 				caption:
 					'Isometric SolidWorks model showing the completed combination spanner geometry.',
 			},
 			{
-				src: '/portfolio_images/Parametric Combination Spanner_1.jpg',
+				src: '/portfolio_images/Parametric Combination Spanner_1.webp',
 				alt: 'Parametric spanner front view',
 				caption:
 					'Front-view workspace with global variables visible in the feature tree.',

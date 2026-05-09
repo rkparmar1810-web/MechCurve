@@ -69,7 +69,7 @@ export default function Navbar() {
 					className="flex items-center gap-2 min-w-0 hover:opacity-90 transition-opacity shrink-0"
 				>
 					<img
-						src="/logo.png"
+						src="/logo.webp"
 						alt="MechCurve"
 						className="h-9 sm:h-10 md:h-12 w-auto flex-shrink-0"
 					/>
