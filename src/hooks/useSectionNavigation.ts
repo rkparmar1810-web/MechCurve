@@ -1,14 +1,12 @@
 import { useEffect, useRef } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 
+// About, Services, Career and Contact are now dedicated routed pages, so they
+// are intentionally excluded here — only sections that physically live on the
+// HomePage participate in scroll-based URL syncing.
 const SECTION_PATHS = [
 	{ id: 'home', path: '/' },
-	{ id: 'about', path: '/about' },
-	{ id: 'services', path: '/services' },
-	{ id: 'portfolio', path: '/portfolio' },
-	{ id: 'testimonials', path: '/testimonials' },
 	{ id: 'faq', path: '/faq' },
-	{ id: 'contact', path: '/contact' },
 ];
 
 function getSectionIdFromPath(pathname: string) {

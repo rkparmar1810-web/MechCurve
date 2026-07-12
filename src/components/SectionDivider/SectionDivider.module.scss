@@ -11,6 +11,167 @@
 	background: #06080d;
 }
 
+.sectionBridge {
+	position: relative;
+	width: 100%;
+	padding: 40px 0 32px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: transparent;
+	overflow: hidden;
+	pointer-events: none;
+	z-index: 2;
+}
+
+.flowchartWrap {
+	position: absolute;
+	inset: 0;
+	pointer-events: none;
+	opacity: 0.9;
+	z-index: 1;
+}
+
+.flowMain {
+	position: absolute;
+	top: 50%;
+	left: 14%;
+	right: 14%;
+	height: 1px;
+	background: linear-gradient(
+		90deg,
+		transparent 0%,
+		rgba(59, 130, 246, 0.2) 22%,
+		rgba(234, 193, 23, 0.42) 50%,
+		rgba(59, 130, 246, 0.2) 78%,
+		transparent 100%
+	);
+	overflow: hidden;
+}
+
+.flowMain::after {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: -22%;
+	width: 22%;
+	height: 100%;
+	background: linear-gradient(
+		90deg,
+		transparent,
+		rgba(234, 193, 23, 0.75),
+		transparent
+	);
+	animation: flowRun 2.5s linear infinite;
+}
+
+.flowBranchLeft,
+.flowBranchRight {
+	position: absolute;
+	top: calc(50% - 10px);
+	width: 58px;
+	height: 20px;
+	border-top: 1px solid rgba(148, 163, 184, 0.28);
+	border-right: 1px solid rgba(148, 163, 184, 0.28);
+	border-radius: 0 12px 0 0;
+}
+
+.flowBranchLeft {
+	left: 28%;
+	transform: scaleX(-1);
+}
+
+.flowBranchRight {
+	right: 28%;
+}
+
+.flowNode {
+	position: absolute;
+	top: calc(50% - 4px);
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	background: #eac117;
+	box-shadow:
+		0 0 10px rgba(234, 193, 23, 0.6),
+		0 0 20px rgba(59, 130, 246, 0.2);
+	animation: nodePulse 2.2s ease-in-out infinite;
+}
+
+.nodeA {
+	left: 18%;
+	animation-delay: 0s;
+}
+
+.nodeB {
+	left: 36%;
+	animation-delay: 0.25s;
+}
+
+.nodeC {
+	right: 36%;
+	animation-delay: 0.5s;
+}
+
+.nodeD {
+	right: 18%;
+	animation-delay: 0.75s;
+}
+
+.flowPulse {
+	position: absolute;
+	top: calc(50% - 10px);
+	left: 50%;
+	width: 20px;
+	height: 20px;
+	border-radius: 50%;
+	transform: translateX(-50%);
+	border: 1px solid rgba(234, 193, 23, 0.35);
+	animation: ringPing 2.2s ease-out infinite;
+}
+
+@keyframes flowRun {
+	0% {
+		left: -22%;
+	}
+	100% {
+		left: 100%;
+	}
+}
+
+@keyframes nodePulse {
+	0%,
+	100% {
+		transform: scale(1);
+		opacity: 0.78;
+	}
+	50% {
+		transform: scale(1.26);
+		opacity: 1;
+	}
+}
+
+@keyframes ringPing {
+	0% {
+		transform: translateX(-50%) scale(0.55);
+		opacity: 0.7;
+	}
+	100% {
+		transform: translateX(-50%) scale(2.2);
+		opacity: 0;
+	}
+}
+
+.textOnlyBlock {
+	position: relative;
+	z-index: 3;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 8px;
+	padding: 0 16px;
+}
+
 /* ── Shared text styles ── */
 .textBlock {
 	position: relative;
@@ -39,19 +200,28 @@
 }
 
 .dividerText {
-	font-size: 0.72rem;
-	font-weight: 700;
-	text-transform: uppercase;
-	letter-spacing: 0.28em;
-	color: rgba(234, 193, 23, 0.55);
+	position: relative;
+	z-index: 3;
+	font-family: var(--font-heading, 'Space Grotesk', 'Inter', sans-serif);
+	font-size: 1rem;
+	font-weight: 800;
+	letter-spacing: -0.015em;
+	line-height: 1.1;
+	text-transform: none;
+	color: #0f172a;
 	text-align: center;
+	/* solid pad masks the animated flow-line behind the label for a clean
+	   "line —— Section Name —— line" look */
+	padding: 0.1em 0.7em;
+	background: #ffffff;
+	border-radius: 12px;
 }
 
 .dividerSubtext {
 	font-size: 0.68rem;
 	font-weight: 500;
 	letter-spacing: 0.12em;
-	color: rgba(148, 163, 184, 0.4);
+	color: #64748b;
 	text-align: center;
 }
 
@@ -524,11 +694,12 @@
 	}
 
 	.dividerText {
-		font-size: 0.62rem;
-		letter-spacing: 0.22em;
+		font-size: 1rem;
+		letter-spacing: -0.01em;
+		padding: 0.1em 0.5em;
 	}
 
 	.dividerSubtext {
-		font-size: 0.58rem;
+		font-size: 0.72rem;
 	}
 }

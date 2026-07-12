@@ -64,6 +64,82 @@
   border-radius: calc(1rem - 2px);
 }
 
+.flowGrid {
+  position: relative;
+  overflow: visible;
+}
+
+.flowCard {
+  position: relative;
+  z-index: 2;
+}
+
+.flowSvg {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .flowSvg {
+    display: block;
+    position: absolute;
+    inset: 8% 8%;
+    width: 84%;
+    height: 84%;
+    z-index: 1;
+    pointer-events: none;
+    overflow: visible;
+  }
+
+  .flowLine {
+    fill: none;
+    stroke: rgba(234, 193, 23, 0.35);
+    stroke-width: 0.26;
+    stroke-linecap: round;
+    stroke-dasharray: 2.8 2.2;
+    animation: flowDash 2.4s linear infinite;
+  }
+
+  .flowNode {
+    fill: #eac117;
+    filter: drop-shadow(0 0 5px rgba(234, 193, 23, 0.65));
+    animation: flowNodePulse 1.8s ease-in-out infinite;
+  }
+
+  .flowNode:nth-of-type(1) {
+    animation-delay: 0s;
+  }
+
+  .flowNode:nth-of-type(2) {
+    animation-delay: 0.2s;
+  }
+
+  .flowNode:nth-of-type(3) {
+    animation-delay: 0.4s;
+  }
+
+  .flowNode:nth-of-type(4) {
+    animation-delay: 0.6s;
+  }
+}
+
+@keyframes flowDash {
+  to {
+    stroke-dashoffset: -5;
+  }
+}
+
+@keyframes flowNodePulse {
+  0%,
+  100% {
+    opacity: 0.65;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.22);
+  }
+}
+
 @keyframes eoBorderSpin {
   to {
     --eo-border-angle: 360deg;

@@ -1,19 +1,17 @@
 import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import useSectionNavigation from '../../hooks/useSectionNavigation';
 import { LuLinkedin, LuMail, LuInstagram, LuYoutube } from 'react-icons/lu';
 import styles from './Footer.module.scss';
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
 const NAV_LINKS = [
-	{ label: 'About', id: 'about' },
-	{ label: 'Services', id: 'services' },
-	{ label: 'Portfolio', id: 'portfolio' },
-	{ label: 'Testimonials', id: 'testimonials' },
-	{ label: 'FAQ', id: 'faq' },
-	{ label: 'Contact', id: 'contact' },
+	{ label: 'About', to: '/about' },
+	{ label: 'Services', to: '/services' },
+	{ label: 'Career', to: '/career' },
+	{ label: 'FAQ', to: '/faq' },
+	{ label: 'Contact', to: '/contact' },
 ];
 
 const DOWNLOADS = [
@@ -57,7 +55,6 @@ const SOCIALS = [
 ];
 
 export default function Footer() {
-	const { navigateToSection } = useSectionNavigation();
 	const footerRef = useRef<HTMLElement>(null);
 	const inView = useInView(footerRef, { once: true, margin: '-40px 0px' });
 
@@ -182,14 +179,13 @@ export default function Footer() {
 						<h4 className={styles.colHeading}>Quick Links</h4>
 						<nav className={styles.navList}>
 							{NAV_LINKS.map((l) => (
-								<button
+								<Link
 									key={l.label}
-									type="button"
-									onClick={() => navigateToSection(l.id)}
+									to={l.to}
 									className={styles.navLink}
 								>
 									{l.label}
-								</button>
+								</Link>
 							))}
 						</nav>
 					</motion.div>

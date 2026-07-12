@@ -1,15 +1,13 @@
 /* ═══════════════════════════════════════════════════════════
-   Legal Page — dark premium, matches site theme exactly.
-   Dark section bg, gold badge, frosted dark cards,
-   gold toggle, gold bullet dots.
-   ═══════════════════════════════════════════════════════════ */
+	Legal Page — light premium style for white site theme.
+	═══════════════════════════════════════════════════════════ */
 
 .legalPage {
 	position: relative;
 	isolation: isolate;
 	padding: 140px 16px 96px;
 	overflow: hidden;
-	background: #06080d;
+	background: #f8fafc;
 
 	@media (max-width: 640px) {
 		padding: 120px 14px 72px;
@@ -57,7 +55,7 @@
 	margin-bottom: 28px;
 	font-size: 0.82rem;
 	font-weight: 600;
-	color: #94a3b8;
+	color: #475569;
 	text-decoration: none;
 	letter-spacing: 0.02em;
 	transition:
@@ -84,14 +82,14 @@
 	position: relative;
 	overflow: hidden;
 	padding: 32px 28px;
-	border: 1px solid rgba(255, 255, 255, 0.07);
+	border: 1px solid #e2e8f0;
 	border-radius: 20px;
-	background: rgba(10, 20, 44, 0.55);
+	background: rgba(255, 255, 255, 0.95);
 	backdrop-filter: blur(14px);
 	-webkit-backdrop-filter: blur(14px);
 	box-shadow:
-		0 24px 56px rgba(0, 0, 0, 0.5),
-		inset 0 1px 0 rgba(255, 255, 255, 0.05);
+		0 24px 56px rgba(15, 23, 42, 0.08),
+		inset 0 1px 0 rgba(255, 255, 255, 0.85);
 
 	/* Subtle gold top border glow */
 	&::before {
@@ -118,7 +116,7 @@
 		line-height: 1.08;
 		letter-spacing: -0.03em;
 		font-weight: 800;
-		color: #ffffff;
+		color: #0f172a;
 		font-family: 'Space Grotesk', 'Inter', sans-serif;
 	}
 
@@ -127,7 +125,7 @@
 		margin: 0;
 		font-size: 0.97rem;
 		line-height: 1.8;
-		color: #94a3b8;
+		color: #475569;
 		max-width: 58ch;
 	}
 
@@ -149,7 +147,7 @@
 	font-weight: 800;
 	letter-spacing: 0.16em;
 	text-transform: uppercase;
-	color: #fcd34d;
+	color: #92400e;
 }
 
 /* ── Last updated ── */
@@ -173,8 +171,8 @@
 	gap: 6px;
 	padding: 5px;
 	border-radius: 14px;
-	border: 1px solid rgba(255, 255, 255, 0.08);
-	background: rgba(6, 8, 13, 0.6);
+	border: 1px solid #e2e8f0;
+	background: rgba(255, 255, 255, 0.95);
 }
 
 .toggleBtn {
@@ -195,7 +193,7 @@
 		transform 260ms ease;
 
 	&:hover {
-		color: #e2e8f0;
+		color: #0f172a;
 		transform: translateY(-1px);
 	}
 }
@@ -224,11 +222,11 @@
 	overflow: hidden;
 	padding: 20px 22px;
 	border-radius: 16px;
-	border: 1px solid rgba(255, 255, 255, 0.06);
-	background: rgba(10, 20, 44, 0.55);
+	border: 1px solid #e2e8f0;
+	background: rgba(255, 255, 255, 0.95);
 	backdrop-filter: blur(12px);
 	-webkit-backdrop-filter: blur(12px);
-	box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
+	box-shadow: 0 12px 32px rgba(15, 23, 42, 0.08);
 	transition:
 		border-color 280ms ease,
 		box-shadow 280ms ease;
@@ -250,7 +248,7 @@
 	&:hover {
 		border-color: rgba(234, 193, 23, 0.14);
 		box-shadow:
-			0 16px 40px rgba(0, 0, 0, 0.4),
+			0 16px 40px rgba(15, 23, 42, 0.1),
 			0 0 32px rgba(234, 193, 23, 0.04);
 
 		&::before {
@@ -263,7 +261,7 @@
 		font-size: 1rem;
 		line-height: 1.35;
 		font-weight: 700;
-		color: #e2e8f0;
+		color: #0f172a;
 		letter-spacing: -0.01em;
 		font-family: 'Space Grotesk', 'Inter', sans-serif;
 	}
@@ -281,7 +279,7 @@
 		padding-left: 16px;
 		font-size: 0.92rem;
 		line-height: 1.75;
-		color: #94a3b8;
+		color: #475569;
 
 		&::before {
 			content: '';
@@ -311,11 +309,11 @@
 	p {
 		margin: 0;
 		font-size: 0.9rem;
-		color: #94a3b8;
+		color: #475569;
 	}
 
 	a {
-		color: #fcd34d;
+		color: #92400e;
 		font-weight: 700;
 		text-decoration: none;
 		border-bottom: 1px solid rgba(234, 193, 23, 0.3);

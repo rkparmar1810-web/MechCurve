@@ -1,331 +1,577 @@
-﻿/* ─── Service card list ─── */
-.services-list {
-	max-width: 1360px;
-	margin: 0 auto;
-	display: flex;
-	flex-direction: column;
-	gap: 1.75rem;
+/* ============================================================
+   Services — "Engineering Console"
+   Immersive, layered, engineering-themed. Light brand theme,
+   gold accent + tonal per-track accents. Prefix: .sx
+   ============================================================ */
+
+.sx {
+	position: relative;
+	isolation: isolate;
+	overflow: hidden;
+	padding: 5.5rem 0 6.5rem;
+	background:
+		radial-gradient(circle at 14% 4%, rgba(234, 193, 23, 0.12), transparent 40%),
+		radial-gradient(circle at 88% 8%, rgba(59, 130, 246, 0.1), transparent 44%),
+		radial-gradient(circle at 50% 100%, rgba(139, 92, 246, 0.08), transparent 46%),
+		linear-gradient(180deg, #ffffff 0%, #f5f8fc 42%, #eaf0f8 100%);
 }
 
-/* ─── Individual service card (dark mode) ─── */
-.svc-card {
+/* ── Scene ── */
+.sx__scene {
+	position: absolute;
+	inset: 0;
+	z-index: -1;
+	pointer-events: none;
+	overflow: hidden;
+}
+
+.sx__grid {
+	position: absolute;
+	inset: -40% -10% -10%;
+	background-image:
+		linear-gradient(rgba(30, 58, 138, 0.06) 1px, transparent 1px),
+		linear-gradient(90deg, rgba(30, 58, 138, 0.06) 1px, transparent 1px);
+	background-size: 46px 46px;
+	transform: perspective(900px) rotateX(58deg);
+	transform-origin: top center;
+	mask-image: linear-gradient(180deg, black, transparent 62%);
+	-webkit-mask-image: linear-gradient(180deg, black, transparent 62%);
+	animation: sxGridDrift 22s linear infinite;
+	opacity: 0.7;
+}
+
+.sx__rays {
+	position: absolute;
+	top: -20%;
+	left: 50%;
+	width: 140%;
+	height: 90%;
+	transform: translateX(-50%);
+	background: conic-gradient(
+		from 180deg at 50% 0%,
+		transparent 0deg,
+		rgba(234, 193, 23, 0.05) 12deg,
+		transparent 26deg,
+		rgba(59, 130, 246, 0.05) 42deg,
+		transparent 60deg
+	);
+	mask-image: radial-gradient(circle at 50% 0%, black, transparent 70%);
+	-webkit-mask-image: radial-gradient(circle at 50% 0%, black, transparent 70%);
+	opacity: 0.8;
+}
+
+.sx__blob {
+	position: absolute;
+	border-radius: 999px;
+	filter: blur(66px);
+	opacity: 0.5;
+	will-change: transform;
+	animation: sxBlob 22s ease-in-out infinite;
+}
+
+.sx__blob--a {
+	top: -6rem;
+	left: -5rem;
+	width: 26rem;
+	height: 26rem;
+	background: radial-gradient(circle, rgba(234, 193, 23, 0.3), transparent 68%);
+}
+.sx__blob--b {
+	top: 40%;
+	right: -7rem;
+	width: 28rem;
+	height: 28rem;
+	background: radial-gradient(circle, rgba(59, 130, 246, 0.24), transparent 68%);
+	animation-delay: -8s;
+}
+.sx__blob--c {
+	bottom: -8rem;
+	left: 36%;
+	width: 24rem;
+	height: 24rem;
+	background: radial-gradient(circle, rgba(139, 92, 246, 0.18), transparent 68%);
+	animation-delay: -14s;
+}
+
+.sx__noise {
+	position: absolute;
+	inset: 0;
+	background-image: radial-gradient(rgba(15, 23, 42, 0.55) 0.5px, transparent 0.5px);
+	background-size: 4px 4px;
+	opacity: 0.035;
+}
+
+/* floating geometric outlines */
+.sx__geo {
+	position: absolute;
+	border: 1.5px solid rgba(30, 58, 138, 0.12);
+	will-change: transform;
+}
+.sx__geo--ring {
+	top: 16%;
+	right: 6%;
+	width: 8rem;
+	height: 8rem;
+	border-radius: 999px;
+	border-style: dashed;
+	animation: sxSpin 40s linear infinite;
+}
+.sx__geo--hex {
+	bottom: 12%;
+	left: 4%;
+	width: 6rem;
+	height: 6rem;
+	clip-path: polygon(50% 0, 93% 25%, 93% 75%, 50% 100%, 7% 75%, 7% 25%);
+	border: none;
+	background: linear-gradient(160deg, rgba(59, 130, 246, 0.08), transparent);
+	animation: sxFloat 9s ease-in-out infinite;
+}
+
+.sx__shell {
+	position: relative;
+	z-index: 1;
+	max-width: 1260px;
+	margin: 0 auto;
+	padding: 0 1.25rem;
+}
+@media (min-width: 640px) {
+	.sx__shell {
+		padding: 0 2rem;
+	}
+}
+@media (min-width: 768px) {
+	.sx__shell {
+		padding: 0 3rem;
+	}
+}
+
+/* ── Header ── */
+.sx__eyebrow {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.55rem;
+	padding: 0.45rem 0.9rem;
+	border-radius: 999px;
+	border: 1px solid rgba(234, 193, 23, 0.4);
+	background: rgba(234, 193, 23, 0.1);
+	color: #b45309;
+	font-size: 0.7rem;
+	font-weight: 800;
+	letter-spacing: 0.2em;
+	text-transform: uppercase;
+}
+.sx__dot {
+	width: 7px;
+	height: 7px;
+	border-radius: 999px;
+	background: #f59e0b;
+	animation: sxPulse 2.4s ease-out infinite;
+}
+
+.sx__title {
+	font-family: var(--font-heading, 'Space Grotesk', sans-serif);
+	font-weight: 800;
+	letter-spacing: -0.03em;
+	line-height: 1.04;
+	color: #0f172a;
+	font-size: clamp(2.1rem, 4.4vw, 3.5rem);
+}
+.sx__title-accent {
+	position: relative;
+	background: linear-gradient(120deg, #eac117 0%, #f59e0b 55%, #d97706 100%);
+	-webkit-background-clip: text;
+	background-clip: text;
+	color: transparent;
+}
+
+.sx__lead {
+	color: #475569;
+	font-size: 1.02rem;
+	line-height: 1.8;
+	max-width: 32rem;
+}
+
+.sx__metrics {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1.6rem 2rem;
+}
+.sx__metric-value {
+	font-family: var(--font-heading, 'Space Grotesk', sans-serif);
+	font-weight: 800;
+	font-size: 1.7rem;
+	letter-spacing: -0.03em;
+	color: #0f172a;
+	line-height: 1;
+}
+.sx__metric-label {
+	margin-top: 0.35rem;
+	font-size: 0.7rem;
+	font-weight: 700;
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+	color: #64748b;
+}
+
+/* ── Header band (photo background, copy on the left) ──
+   Full-bleed: breaks out of .sx__shell's max-width to span the viewport. */
+.sx__band {
+	position: relative;
+	overflow: hidden;
+	background: #f8fafc;
+	display: flex;
+	align-items: center;
+	min-height: 520px;
+	width: 100vw;
+	margin-left: calc(50% - 50vw);
+	margin-right: calc(50% - 50vw);
+}
+
+.sx__band-img {
+	position: absolute;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	object-position: right center;
+}
+
+/* Fades the photo out under the copy so text always lands on near-white. */
+.sx__band-scrim {
+	position: absolute;
+	inset: 0;
+	pointer-events: none;
+	background: linear-gradient(
+		90deg,
+		rgba(248, 250, 252, 0.97) 0%,
+		rgba(248, 250, 252, 0.94) 30%,
+		rgba(248, 250, 252, 0.72) 46%,
+		rgba(248, 250, 252, 0.22) 62%,
+		rgba(248, 250, 252, 0) 76%
+	);
+}
+
+/* Re-aligns the copy to the shell's content column now that the band is
+   full-bleed, so the heading still lines up with the tracks below. */
+.sx__band-copy {
+	position: relative;
+	z-index: 1;
+	width: 100%;
+	max-width: 1260px;
+	margin: 0 auto;
+	padding: 4rem 1.25rem;
+}
+.sx__band-copy > * {
+	max-width: 34rem;
+}
+@media (min-width: 640px) {
+	.sx__band-copy {
+		padding: 4rem 2rem;
+	}
+}
+
+@media (max-width: 900px) {
+	.sx__band {
+		min-height: 0;
+	}
+	.sx__band-img {
+		object-position: 70% center;
+	}
+	/* Narrow widths: the subject sits behind the copy, so fade vertically
+	   instead of horizontally to keep the text legible. */
+	.sx__band-scrim {
+		background: linear-gradient(
+			180deg,
+			rgba(248, 250, 252, 0.96) 0%,
+			rgba(248, 250, 252, 0.93) 55%,
+			rgba(248, 250, 252, 0.82) 100%
+		);
+	}
+	.sx__band-copy {
+		max-width: none;
+		padding: 2.25rem 1.5rem;
+	}
+}
+
+/* ── Zig-zag track blocks ── */
+.sx__track {
 	position: relative;
 	display: grid;
-	grid-template-columns: 1fr 1fr;
-	min-height: 480px;
-	gap: 0;
-	border-radius: 20px;
+	grid-template-columns: 1fr;
+	gap: 2rem;
+	align-items: center;
+}
+@media (min-width: 1024px) {
+	.sx__track {
+		grid-template-columns: 1fr 1fr;
+		gap: 3.5rem;
+	}
+	.sx__track--rev .sx__track-visual {
+		order: 2;
+	}
+}
+
+/* connective spine between blocks */
+.sx__spine {
+	position: absolute;
+	left: 50%;
+	top: -2.4rem;
+	height: 2.4rem;
+	width: 2px;
+	transform: translateX(-50%);
+	background: linear-gradient(180deg, transparent, rgba(148, 163, 184, 0.5));
+}
+.sx__spine::after {
+	content: '';
+	position: absolute;
+	left: 50%;
+	bottom: -4px;
+	width: 9px;
+	height: 9px;
+	border-radius: 999px;
+	transform: translateX(-50%);
+	background: var(--tone-icon, #f59e0b);
+	box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.8), 0 0 14px var(--tone-glow, rgba(245, 158, 11, 0.5));
+}
+
+/* text side */
+.sx__track-index {
+	font-family: var(--font-heading, 'Space Grotesk', sans-serif);
+	font-size: clamp(3rem, 7vw, 4.6rem);
+	font-weight: 800;
+	line-height: 1;
+	letter-spacing: -0.04em;
+	color: transparent;
+	-webkit-text-stroke: 1.5px var(--tone-ring, rgba(148, 163, 184, 0.4));
+}
+.sx__track-eyebrow {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.5rem;
+	margin-top: 0.4rem;
+	font-size: 0.72rem;
+	font-weight: 800;
+	letter-spacing: 0.14em;
+	text-transform: uppercase;
+	color: var(--tone-text, #b45309);
+}
+.sx__track-icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 2.2rem;
+	height: 2.2rem;
+	border-radius: 12px;
+	color: var(--tone-icon, #f59e0b);
+	background: var(--tone-chip, rgba(234, 193, 23, 0.12));
+	border: 1px solid var(--tone-ring, rgba(234, 193, 23, 0.32));
+}
+.sx__track-title {
+	margin-top: 0.7rem;
+	font-family: var(--font-heading, 'Space Grotesk', sans-serif);
+	font-weight: 800;
+	letter-spacing: -0.025em;
+	color: #0f172a;
+	font-size: clamp(1.6rem, 2.6vw, 2.1rem);
+	line-height: 1.1;
+}
+.sx__track-desc {
+	margin-top: 0.75rem;
+	color: #475569;
+	font-size: 1rem;
+	line-height: 1.8;
+	max-width: 32rem;
+}
+
+.sx__rail {
+	margin-top: 1.25rem;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.55rem;
+}
+.sx__chip {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.35rem;
+	padding: 0.5rem 0.85rem;
+	border-radius: 999px;
+	font-size: 0.82rem;
+	font-weight: 600;
+	color: #334155;
+	background: rgba(255, 255, 255, 0.85);
+	border: 1px solid rgba(226, 232, 240, 0.95);
+	box-shadow: 0 4px 12px rgba(15, 23, 42, 0.05);
+	transition:
+		transform 0.28s ease,
+		color 0.28s ease,
+		border-color 0.28s ease,
+		background 0.28s ease,
+		box-shadow 0.28s ease;
+}
+.sx__chip svg {
+	opacity: 0;
+	transform: translateX(-4px);
+	transition: opacity 0.28s ease, transform 0.28s ease;
+}
+.sx__chip:hover {
+	transform: translateY(-2px);
+	color: var(--tone-text, #b45309);
+	border-color: var(--tone-ring, rgba(234, 193, 23, 0.42));
+	background: var(--tone-chip, rgba(234, 193, 23, 0.1));
+	box-shadow: 0 10px 22px rgba(15, 23, 42, 0.1);
+}
+.sx__chip:hover svg {
+	opacity: 1;
+	transform: translateX(0);
+}
+
+.sx__explore {
+	position: relative;
+	margin-top: 1.5rem;
+	display: inline-flex;
+	align-items: center;
+	gap: 0.5rem;
+	padding: 0.85rem 1.4rem;
+	border-radius: 14px;
+	font-weight: 800;
+	font-size: 0.9rem;
+	color: #0f172a;
+	background: rgba(255, 255, 255, 0.9);
+	border: 1px solid var(--tone-ring, rgba(148, 163, 184, 0.4));
+	box-shadow: 0 10px 26px rgba(15, 23, 42, 0.06);
 	overflow: hidden;
-	background: rgba(10, 20, 44, 0.75);
-	border: 1px solid rgba(255, 255, 255, 0.06);
+	transition: transform 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+}
+.sx__explore::before {
+	content: '';
+	position: absolute;
+	inset: 0;
+	background: var(--tone-chip, rgba(234, 193, 23, 0.14));
+	transform: translateX(-101%);
+	transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.sx__explore span,
+.sx__explore svg {
+	position: relative;
+	z-index: 1;
+}
+.sx__explore:hover {
+	transform: translateY(-2px);
+	color: var(--tone-text, #b45309);
+	box-shadow: 0 16px 34px rgba(15, 23, 42, 0.12);
+}
+.sx__explore:hover::before {
+	transform: translateX(0);
+}
+.sx__explore:hover svg {
+	transform: translateX(3px);
+	transition: transform 0.3s ease;
+}
+
+/* visual side */
+.sx__track-visual {
+	--mx: 50%;
+	--my: 40%;
+	position: relative;
+	border-radius: 24px;
+	padding: 0.9rem;
+	background: linear-gradient(150deg, rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0.6));
+	border: 1px solid rgba(255, 255, 255, 0.7);
 	box-shadow:
-		0 16px 56px rgba(0, 0, 0, 0.45),
-		inset 0 1px 0 rgba(255, 255, 255, 0.04);
-	will-change: transform;
-	backdrop-filter: blur(12px);
-	-webkit-backdrop-filter: blur(12px);
+		0 30px 70px rgba(15, 23, 42, 0.12),
+		inset 0 1px 0 rgba(255, 255, 255, 0.9);
+	backdrop-filter: blur(16px);
+	-webkit-backdrop-filter: blur(16px);
+	transition: box-shadow 0.4s ease, border-color 0.4s ease;
+}
+.sx__track-visual:hover {
+	border-color: var(--tone-ring, rgba(148, 163, 184, 0.5));
+	box-shadow:
+		0 40px 84px rgba(15, 23, 42, 0.16),
+		0 0 0 1px var(--tone-ring, rgba(148, 163, 184, 0.4));
+}
+.sx__view-stage {
+	position: relative;
+	overflow: hidden;
+	border-radius: 16px;
+	aspect-ratio: 16 / 11;
+	background:
+		radial-gradient(circle at 26% 16%, var(--tone-glow, rgba(234, 193, 23, 0.16)), transparent 52%),
+		linear-gradient(180deg, #0a1120 0%, #0e1a30 100%);
+	border: 1px solid rgba(148, 163, 184, 0.22);
+}
+/* Photo variant: the image supplies its own backdrop, so drop the CAD-stage
+   gradient and let it fill the frame. */
+.sx__view-stage--photo {
+	background: #0a1120;
+	border-color: rgba(148, 163, 184, 0.28);
+}
+.sx__view-img {
+	position: absolute;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.sx__track-visual:hover .sx__view-img {
+	transform: scale(1.04);
+}
 
-	// Mouse spotlight — gold-tinted, follows cursor
-	&::before {
-		content: '';
-		position: absolute;
-		inset: 0;
-		z-index: 3;
-		pointer-events: none;
-		border-radius: inherit;
-		background: radial-gradient(
-			circle 320px at var(--mx, 50%) var(--my, 50%),
-			rgba(234, 193, 23, 0.04),
-			transparent 65%
-		);
-		opacity: 0;
-		transition: opacity 320ms ease;
+/* ── Reduced motion ── */
+@media (prefers-reduced-motion: reduce) {
+	.sx__grid,
+	.sx__blob,
+	.sx__geo--ring,
+	.sx__geo--hex,
+	.sx__dot {
+		animation: none !important;
 	}
-
-	&:hover {
-		border-color: rgba(234, 193, 23, 0.15);
-		box-shadow:
-			0 28px 72px rgba(0, 0, 0, 0.55),
-			0 0 40px rgba(234, 193, 23, 0.03);
-
-		&::before {
-			opacity: 1;
-		}
-	}
-
-	// Alternating layout
-	&--reversed {
-		direction: rtl;
-
-		> * {
-			direction: ltr;
-		}
-	}
-
-	/* ─ Image side ─ */
-	&__visual {
-		position: relative;
-		min-height: 480px;
-		overflow: hidden;
-	}
-
-	&__image {
-		width: 100%;
-		height: 100%;
-		object-fit: cover;
-		object-position: center;
-		display: block;
-		filter: brightness(0.85) saturate(0.9);
-		transition:
-			transform 600ms cubic-bezier(0.22, 1, 0.36, 1),
-			filter 400ms ease;
-	}
-
-	&:hover &__image {
-		transform: scale(1.05);
-		filter: brightness(0.92) saturate(1);
-	}
-
-	&__image-overlay {
-		position: absolute;
-		inset: 0;
-		pointer-events: none;
-	}
-
-	// Dark gradients instead of white
-	&:not(&--reversed) &__image-overlay {
-		background: linear-gradient(
-			to left,
-			rgba(10, 20, 44, 0.95) 0%,
-			rgba(10, 20, 44, 0.75) 20%,
-			rgba(10, 20, 44, 0.3) 50%,
-			transparent 80%
-		);
-	}
-
-	&--reversed &__image-overlay {
-		background: linear-gradient(
-			to right,
-			rgba(10, 20, 44, 0.95) 0%,
-			rgba(10, 20, 44, 0.75) 20%,
-			rgba(10, 20, 44, 0.3) 50%,
-			transparent 80%
-		);
-	}
-
-	/* ─ Content side ─ */
-	&__content {
-		position: relative;
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		padding: 2.5rem 2.8rem;
-		gap: 0;
-		overflow: hidden;
-		z-index: 1;
-	}
-
-	// Gold shimmer line — sweeps across on hover
-	&__shimmer {
-		position: absolute;
-		top: 0;
-		left: 0;
-		right: 0;
-		height: 1px;
-		background: linear-gradient(
-			90deg,
-			transparent,
-			rgba(234, 193, 23, 0.5),
-			transparent
-		);
-		transform: translateX(-100%);
-		transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
-		pointer-events: none;
-		z-index: 5;
-	}
-
-	&:hover &__shimmer {
-		transform: translateX(100%);
-	}
-
-	// Ghost watermark number — gold tint
-	&__number-bg {
-		position: absolute;
-		bottom: -1rem;
-		right: 1rem;
-		font-size: 8rem;
-		font-weight: 900;
-		line-height: 1;
-		letter-spacing: -0.06em;
-		color: transparent;
-		background: linear-gradient(
-			180deg,
-			rgba(234, 193, 23, 0.06) 0%,
-			rgba(234, 193, 23, 0.01) 100%
-		);
-		-webkit-background-clip: text;
-		background-clip: text;
-		pointer-events: none;
-		user-select: none;
-		transition: background 400ms ease;
-	}
-
-	&:hover &__number-bg {
-		background: linear-gradient(
-			180deg,
-			rgba(234, 193, 23, 0.12) 0%,
-			rgba(234, 193, 23, 0.02) 100%
-		);
-		-webkit-background-clip: text;
-		background-clip: text;
-	}
-
-	&__eyebrow {
-		display: inline-flex;
-		align-items: center;
-		align-self: flex-start;
-		gap: 6px;
-		font-size: 0.7rem;
-		font-weight: 700;
-		letter-spacing: 0.14em;
-		text-transform: uppercase;
-		background: linear-gradient(90deg, #EAC117, #F59E0B);
-		-webkit-background-clip: text;
-		background-clip: text;
-		color: transparent;
-		margin-bottom: 0.7rem;
-	}
-
-	&__eyebrow-dot {
-		width: 6px;
-		height: 6px;
-		border-radius: 50%;
-		background: linear-gradient(135deg, #EAC117, #D97706);
-		box-shadow: 0 0 8px rgba(234, 193, 23, 0.5);
-		flex-shrink: 0;
-	}
-
-	&__title {
-		margin: 0 0 0.6rem;
-		font-size: 1.5rem;
-		line-height: 1.15;
-		letter-spacing: -0.025em;
-		color: #ffffff;
-		font-weight: 800;
-	}
-
-	&__desc {
-		margin: 0 0 1.1rem;
-		color: #94a3b8; // slate-400
-		font-size: 0.88rem;
-		line-height: 1.7;
-		max-width: 40ch;
-	}
-
-	&__features {
-		margin: 0;
-		padding: 0;
-		list-style: none;
-		display: flex;
-		flex-wrap: wrap;
-		gap: 0.4rem;
-	}
-
-	&__feature {
-		display: inline-flex;
-		align-items: center;
-		gap: 0.35rem;
-		padding: 0.28rem 0.7rem;
-		border-radius: 999px;
-		background: rgba(234, 193, 23, 0.05);
-		border: 1px solid rgba(234, 193, 23, 0.12);
-		color: #cbd5e1; // slate-300
-		font-size: 0.75rem;
-		font-weight: 600;
-		letter-spacing: 0.01em;
-		transition:
-			background 250ms ease,
-			border-color 250ms ease;
-
-		&:hover {
-			background: rgba(234, 193, 23, 0.1);
-			border-color: rgba(234, 193, 23, 0.25);
-		}
-	}
-
-	&__feature-icon {
-		flex: 0 0 auto;
-		color: #EAC117;
-		display: flex;
-		align-items: center;
+	.sx__view-img {
+		transition: none;
 	}
 }
 
-/* ─── Responsive ─── */
-@media (max-width: 1024px) {
-	.svc-card {
-		min-height: 400px;
-
-		&__content {
-			padding: 2rem 2rem;
-		}
-
-		&__title {
-			font-size: 1.3rem;
-		}
-
-		&__visual {
-			min-height: 400px;
-		}
-
-		&__number-bg {
-			font-size: 6rem;
-		}
+/* ── Keyframes ── */
+@keyframes sxGridDrift {
+	from {
+		background-position: 0 0;
+	}
+	to {
+		background-position: 0 46px;
 	}
 }
-
-@media (max-width: 767px) {
-	.services-list {
-		gap: 1.25rem;
+@keyframes sxBlob {
+	0%,
+	100% {
+		transform: translate3d(0, 0, 0) scale(1);
 	}
-
-	.svc-card {
-		grid-template-columns: 1fr;
-		min-height: auto;
-		border-radius: 16px;
-
-		&--reversed {
-			direction: ltr;
-		}
-
-		&__visual {
-			min-height: 220px;
-			max-height: 280px;
-		}
-
-		&__image-overlay {
-			background: linear-gradient(
-				to top,
-				rgba(10, 20, 44, 0.95) 0%,
-				rgba(10, 20, 44, 0.4) 40%,
-				transparent 70%
-			) !important;
-		}
-
-		&__content {
-			padding: 1.4rem 1.3rem 1.6rem;
-		}
-
-		&__desc {
-			max-width: none;
-		}
-
-		&__title {
-			font-size: 1.2rem;
-		}
-
-		&__number-bg {
-			font-size: 4.5rem;
-		}
+	50% {
+		transform: translate3d(0, -28px, 0) scale(1.08);
+	}
+}
+@keyframes sxFloat {
+	0%,
+	100% {
+		transform: translateY(0);
+	}
+	50% {
+		transform: translateY(-7px);
+	}
+}
+@keyframes sxSpin {
+	to {
+		transform: rotate(360deg);
+	}
+}
+@keyframes sxPulse {
+	0% {
+		box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.5);
+	}
+	70% {
+		box-shadow: 0 0 0 8px rgba(245, 158, 11, 0);
+	}
+	100% {
+		box-shadow: 0 0 0 0 rgba(245, 158, 11, 0);
 	}
 }

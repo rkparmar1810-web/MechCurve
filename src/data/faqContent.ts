@@ -28,80 +28,84 @@ export function buildWhatsAppUrl(message: string) {
 
 export const faqItems: FaqItem[] = [
 	{
-		id: 'services-offer',
-		category: 'About Our Company',
-		question: 'What services does your company offer?',
+		id: 'mechanical-services',
+		category: 'General',
+		question: 'What mechanical design services does MechCurve provide?',
 		answer:
-			'We provide a comprehensive range of professional services, including mechanical design solutions, SolidWorks training, 3D printing, and manufacturing support. Our goal is to assist students, startups, and small businesses in transforming their ideas into fully developed products.',
+			'MechCurve offers product development, industrial design, embedded systems, reverse engineering, 3D CAD modeling, drafting and documentation, rapid prototyping, and CAD training services.',
 	},
 	{
-		id: 'industry-experience',
-		category: 'About Our Company',
-		question: 'What is your industry experience?',
+		id: 'industries-served',
+		category: 'General',
+		question: 'Which industries do you serve?',
 		answer:
-			'We have been actively operating in the design industry since 2022, primarily supporting small businesses with practical and efficient design solutions. Over time, we have expanded our expertise to include training programs and end-to-end product development services.',
+			'We support manufacturers, startups, OEMs, industrial equipment companies, and engineering professionals.',
 	},
+	{
+		id: 'software-stack',
+		category: 'Technical',
+		question: 'Which CAD software do you use?',
+		answer:
+			'We primarily work with SolidWorks, NX, CATIA, and other industry-standard engineering tools.',
+	},
+	{
+		id: 'rapid-prototyping-support',
+		category: 'Technical',
+		question: 'Can you help with rapid prototyping?',
+		answer:
+			'Yes. We assist clients with additive manufacturing and prototype validation using FDM, SLA, and SLM.',
+	},
+	{
+		id: 'cad-beginners',
+		category: 'CAD Training',
+		question: 'Do you provide CAD training for beginners?',
+		answer:
+			'Yes. Our programs are designed for students, graduates, and working professionals. They are aligned with industry requirements and are customizable.',
+	},
+];
+
+export const careerFaqItems: FaqItem[] = [
 	{
 		id: 'courses-offer',
 		category: 'Courses & Training',
 		question: 'What courses do you offer?',
 		answer:
-			'We offer industry-focused training programs, including SolidWorks (CSWA + CSWP - 4 Modules), GD&T (Geometric Dimensioning & Tolerancing) Basics, and customized courses tailored to individual or organizational requirements.',
+			'We offer industry-focused training programs, including SolidWorks (CSWA + CSWP - 4 Modules), GD&T basics, and customized learning tracks.',
 	},
 	{
 		id: 'course-duration',
 		category: 'Courses & Training',
 		question: 'What is the duration of the courses?',
 		answer:
-			'The standard course duration is approximately one month, depending on the selected modules or customization requirements.',
+			'The standard course duration is approximately one month, depending on selected modules and customization level.',
 	},
 	{
 		id: 'course-certificate',
 		category: 'Courses & Training',
 		question: 'Do you provide certification?',
 		answer:
-			'Yes, we provide an internationally recognized certificate upon successful completion of the course, valued by employers globally.',
-	},
-	{
-		id: 'design-services',
-		category: 'Design Services',
-		question: 'Do you offer design services?',
-		answer:
-			'Yes, we provide complete design solutions, including 3D modeling, 2D drafting, sheet metal design, and full product development support.',
-	},
-	{
-		id: 'project-contact',
-		category: 'Design Services',
-		question: 'How can I contact you for a project?',
-		answer:
-			'You can reach out to us via email or WhatsApp. Simply share your project requirements, and our team will respond promptly.',
-	},
-	{
-		id: 'locations',
-		category: 'Location & Training Mode',
-		question: 'Where are you located?',
-		answer:
-			'We operate across multiple locations, including Vadodara, Ahmedabad, and Surat.',
+			'Yes, we provide a completion certificate after successful evaluation and project submission.',
 	},
 	{
 		id: 'training-mode',
 		category: 'Location & Training Mode',
 		question: 'Do you offer online or offline classes?',
 		answer:
-			'We provide both online and offline training options, allowing you to choose the format that best suits your needs.',
+			'We provide both online and offline training options, so students can pick the format that suits their schedule.',
 	},
 	{
 		id: 'course-enrollment',
 		category: 'Enrollment & Demo',
 		question: 'How can I enroll in your courses?',
 		answer:
-			'To get started, please share your name and contact number. Our team will connect with you shortly to guide you through the enrollment process.',
+			'Share your name, education background, and contact number. Our team will guide you through batch selection and enrollment.',
 	},
 	{
 		id: 'demo-class',
 		category: 'Enrollment & Demo',
 		question: 'Do you offer demo classes?',
-		answer: 'Yes, we offer demo sessions. Please contact us to book your slot.',
+		answer:
+			'Yes, demo sessions are available. Contact us to get available slots and session format details.',
 	},
 ];
 
@@ -181,11 +185,9 @@ export const whatsappChatMessages: WhatsAppChatMessage[] = [
 ];
 
 export const faqCategoryOrder = [
-	'About Our Company',
-	'Courses & Training',
-	'Design Services',
-	'Location & Training Mode',
-	'Enrollment & Demo',
+	'General',
+	'Technical',
+	'CAD Training',
 ];
 
 export const whatsappQuickOptions: WhatsAppQuickOption[] = [

@@ -1,10 +1,18 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useLocation } from 'react-router-dom';
 
 export default function ScrollIndicator() {
 	const [visible, setVisible] = useState(true);
+	const { pathname } = useLocation();
+	const hideOnThisPage = pathname === '/career';
 
 	useEffect(() => {
+		if (hideOnThisPage) {
+			setVisible(false);
+			return;
+		}
+
 		const onScroll = () => {
 			const eng = document.getElementById('engineering');
 			if (eng) {
@@ -17,7 +25,9 @@ export default function ScrollIndicator() {
 		onScroll();
 		window.addEventListener('scroll', onScroll, { passive: true });
 		return () => window.removeEventListener('scroll', onScroll);
-	}, []);
+	}, [hideOnThisPage]);
+
+	if (hideOnThisPage) return null;
 
 	const scrollToEngineering = () => {
 		const el = document.getElementById('engineering');

@@ -8,7 +8,7 @@
 	position: relative;
 	padding: 56px 0 72px;
 	overflow: hidden;
-	background: #06080D;
+	background: #f8fafc;
 }
 
 /* ── Topographic contour lines (unique to Contact) ── */
@@ -33,7 +33,7 @@
 	height: 360px;
 	background: radial-gradient(
 		ellipse at center,
-		rgba(234, 193, 23, 0.035),
+		rgba(234, 193, 23, 0.08),
 		transparent 70%
 	);
 	pointer-events: none;
@@ -65,8 +65,8 @@
 	font-weight: 800;
 	letter-spacing: 0.16em;
 	text-transform: uppercase;
-	color: #fcd34d;
-	background: rgba(234, 193, 23, 0.06);
+	color: #92400e;
+	background: rgba(234, 193, 23, 0.1);
 	border: 1px solid rgba(234, 193, 23, 0.18);
 }
 
@@ -76,7 +76,7 @@
 	font-weight: 800;
 	line-height: 1.15;
 	letter-spacing: -0.03em;
-	color: #ffffff;
+	color: #0f172a;
 }
 
 .subtext {
@@ -84,15 +84,15 @@
 	max-width: 480px;
 	font-size: 1rem;
 	line-height: 1.75;
-	color: #94a3b8;
+	color: #475569;
 }
 
 /* ── Two-column layout ── */
 .twoCol {
 	display: grid;
-	grid-template-columns: 1fr 360px;
+	grid-template-columns: minmax(0, 1.08fr) minmax(320px, 0.92fr);
 	gap: 28px;
-	align-items: start;
+	align-items: stretch;
 
 	@media (max-width: 840px) {
 		grid-template-columns: 1fr;
@@ -104,10 +104,11 @@
 	position: relative;
 	padding: 28px 28px 32px;
 	border-radius: 20px;
-	background: rgba(10, 20, 44, 0.55);
-	border: 1px solid rgba(255, 255, 255, 0.06);
+	background: #ffffff;
+	border: 1px solid #e2e8f0;
 	backdrop-filter: blur(14px);
 	-webkit-backdrop-filter: blur(14px);
+	box-shadow: 0 16px 44px rgba(15, 23, 42, 0.08);
 }
 
 .form {
@@ -131,7 +132,7 @@
 	font-weight: 700;
 	letter-spacing: 0.08em;
 	text-transform: uppercase;
-	color: #94a3b8;
+	color: #475569;
 }
 
 .required {
@@ -145,21 +146,21 @@
 	border-radius: 12px;
 	font-size: 0.92rem;
 	font-weight: 500;
-	color: #e2e8f0;
-	background: rgba(6, 8, 13, 0.7);
-	border: 1px solid rgba(255, 255, 255, 0.08);
+	color: #0f172a;
+	background: #ffffff;
+	border: 1px solid #cbd5e1;
 	outline: none;
 	transition:
 		border-color 250ms ease,
 		box-shadow 250ms ease;
 
 	&::placeholder {
-		color: #475569;
+		color: #94a3b8;
 	}
 
 	&:focus {
-		border-color: rgba(234, 193, 23, 0.4);
-		box-shadow: 0 0 0 3px rgba(234, 193, 23, 0.08);
+		border-color: rgba(59, 130, 246, 0.45);
+		box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
 	}
 }
 
@@ -178,8 +179,8 @@
 	padding-right: 38px;
 
 	option {
-		background: #0a142c;
-		color: #e2e8f0;
+		background: #ffffff;
+		color: #0f172a;
 	}
 }
 
@@ -205,8 +206,8 @@
 	border-radius: 12px;
 	font-size: 0.85rem;
 	font-weight: 600;
-	color: #fca5a5;
-	background: rgba(239, 68, 68, 0.08);
+	color: #b91c1c;
+	background: rgba(254, 226, 226, 0.7);
 	border: 1px solid rgba(239, 68, 68, 0.2);
 }
 
@@ -236,13 +237,13 @@
 .successState h3 {
 	font-size: 1.4rem;
 	font-weight: 800;
-	color: #ffffff;
+	color: #0f172a;
 	margin: 0;
 }
 
 .successState p {
 	font-size: 0.95rem;
-	color: #94a3b8;
+	color: #475569;
 	line-height: 1.7;
 	max-width: 360px;
 	margin: 0 0 12px;
@@ -278,8 +279,8 @@
 	gap: 14px;
 	padding: 18px 20px;
 	border-radius: 16px;
-	background: rgba(10, 20, 44, 0.55);
-	border: 1px solid rgba(255, 255, 255, 0.06);
+	background: #ffffff;
+	border: 1px solid #e2e8f0;
 	backdrop-filter: blur(14px);
 	-webkit-backdrop-filter: blur(14px);
 	overflow: hidden;
@@ -292,8 +293,8 @@
 
 	&:hover {
 		border-color: rgba(234, 193, 23, 0.18);
-		background: rgba(10, 20, 44, 0.7);
-		box-shadow: 0 8px 28px rgba(0, 0, 0, 0.3);
+		background: #ffffff;
+		box-shadow: 0 10px 30px rgba(15, 23, 42, 0.1);
 	}
 
 	@media (min-width: 768px) {
@@ -349,7 +350,7 @@
 .cardValue {
 	font-size: 0.9rem;
 	font-weight: 600;
-	color: #e2e8f0;
+	color: #0f172a;
 	line-height: 1.4;
 	word-break: break-word;
 
@@ -416,31 +417,6 @@
 	}
 }
 
-.ctaSecondary {
-	display: inline-flex;
-	align-items: center;
-	justify-content: center;
-	padding: 14px 26px;
-	border-radius: 14px;
-	font-size: 0.92rem;
-	font-weight: 700;
-	color: #e2e8f0;
-	background: rgba(255, 255, 255, 0.04);
-	border: 1px solid rgba(255, 255, 255, 0.1);
-	text-decoration: none;
-	cursor: pointer;
-	transition:
-		border-color 250ms ease,
-		color 250ms ease,
-		background 250ms ease;
-
-	&:hover {
-		border-color: rgba(234, 193, 23, 0.25);
-		color: #EAC117;
-		background: rgba(234, 193, 23, 0.04);
-	}
-}
-
 /* ── Responsive ── */
 @media (max-width: 480px) {
 	.section {
@@ -455,8 +431,7 @@
 		padding: 20px 16px 24px;
 	}
 
-	.ctaBtn,
-	.ctaSecondary {
+	.ctaBtn {
 		padding: 14px 22px;
 		font-size: 0.86rem;
 	}

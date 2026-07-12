@@ -1,19 +1,25 @@
-import { projectDetails } from './data/detailContent';
-
-const projectRoutes = Object.keys(projectDetails).map(
-	(id) => `/projects/${id}`,
-);
-
 export const PRERENDER_ROUTES = [
 	'/',
 	'/about',
 	'/services',
-	'/portfolio',
+	'/services/product-development',
+	'/services/industrial-design',
+	'/services/electro-mechanical-integration',
+	'/services/embedded-systems',
+	'/services/reverse-engineering',
+	'/services/3d-cad-modeling',
+	'/services/sheet-metal-design',
+	'/services/drafting-documentation',
+	'/services/product-analysis',
+	'/services/design-validation',
+	'/services/cae-cfd',
+	'/services/thermal-analysis',
+	'/services/fdm',
+	'/services/sla',
+	'/services/slm',
+	'/career',
 	'/contact',
-	'/testimonials',
 	'/faq',
 	'/terms-of-service',
 	'/privacy-policy',
-	...projectRoutes,
 ];
-

@@ -1,5 +1,5 @@
-import { projectDetails } from '../data/detailContent';
 import { SITE_URL } from './site';
+import { serviceDetailsBySlug } from '../data/servicesContent';
 
 export type SeoDefinition = {
 	title: string;
@@ -12,7 +12,7 @@ export type SeoDefinition = {
 const DEFAULT_TITLE =
 	'MechCurve | Mechanical Design Engineering & SolidWorks Training';
 const DEFAULT_DESCRIPTION =
-	'MechCurve offers mechanical CAD engineering, SolidWorks training, manufacturing-ready deliverables, and mentorship for students and teams.';
+	'MechCurve offers mechanical CAD engineering, manufacturing-ready deliverables, and dedicated career training guidance for students and teams.';
 const DEFAULT_IMAGE_URL = `${SITE_URL}/logo.webp`;
 
 function normalizePath(pathname: string) {
@@ -22,6 +22,21 @@ function normalizePath(pathname: string) {
 
 export function getSeoForPath(pathname: string): SeoDefinition {
 	const path = normalizePath(pathname);
+	const serviceMatch = path.match(/^\/services\/([a-z0-9-]+)$/);
+
+	if (serviceMatch) {
+		const slug = serviceMatch[1];
+		const service = serviceDetailsBySlug[slug];
+		if (service) {
+			return {
+				title: `${service.title} | MechCurve Services`,
+				description: service.shortDescription,
+				canonicalUrl: `${SITE_URL}${path}`,
+				robots: 'index, follow',
+				imageUrl: DEFAULT_IMAGE_URL,
+			};
+		}
+	}
 
 	// Legal pages
 	if (path === '/terms-of-service') {
@@ -44,32 +59,6 @@ export function getSeoForPath(pathname: string): SeoDefinition {
 		};
 	}
 
-	// Project detail pages
-	const projectMatch = path.match(/^\/projects\/([^/?#]+)/);
-	if (projectMatch) {
-		const slug = decodeURIComponent(projectMatch[1]);
-		const project = projectDetails[slug];
-
-		if (project) {
-			return {
-				title: `${project.title} | MechCurve`,
-				description: project.description,
-				canonicalUrl: `${SITE_URL}/projects/${project.id}`,
-				robots: 'index, follow',
-				imageUrl: DEFAULT_IMAGE_URL,
-			};
-		}
-
-		return {
-			title: 'Detail Not Found | MechCurve',
-			description:
-				'The requested page was not found. Explore MechCurve services and projects from the main pages.',
-			canonicalUrl: `${SITE_URL}${path}`,
-			robots: 'noindex, nofollow',
-			imageUrl: DEFAULT_IMAGE_URL,
-		};
-	}
-
 	// Primary routes that render HomePage
 	const byPath: Record<string, { title: string; description: string }> = {
 		'/': {
@@ -79,32 +68,32 @@ export function getSeoForPath(pathname: string): SeoDefinition {
 		'/about': {
 			title: 'About MechCurve | Mechanical Design Team',
 			description:
-				'Learn about the MechCurve team, our engineering workflow, and our approach to practical CAD training and manufacturing-ready design delivery.',
+				'Learn about the MechCurve team, our engineering workflow, and our approach to manufacturing-ready design delivery.',
 		},
 		'/services': {
-			title: 'Services | CAD Design, SolidWorks Training, Mentorship',
+			title: 'Services | CAD Design, Product Development, Manufacturing',
 			description:
-				'Explore CAD modeling, product design guidance, SolidWorks training, and engineering mentorship services from MechCurve.',
+				'Explore CAD modeling, product design guidance, and manufacturing support services from MechCurve.',
 		},
-		'/portfolio': {
-			title: 'Portfolio | Mechanical Design Projects by MechCurve',
+		'/career': {
+			title: 'Career | Training and Mentorship at MechCurve',
 			description:
-				'View selected mechanical design and CAD projects, including fixtures, assemblies, product redesign, and rapid prototyping work.',
+				'Explore student training, mentorship, certification preparation, and placement guidance in one dedicated career section.',
 		},
 		'/contact': {
-			title: 'Contact MechCurve | Book Training or Project Consultation',
+			title: 'Contact MechCurve | Project Consultation and Career Inquiry',
 			description:
-				'Get in touch with MechCurve for CAD projects, SolidWorks training, design mentorship, and manufacturing-focused engineering support.',
+				'Get in touch with MechCurve for CAD projects, manufacturing-focused engineering support, and career program inquiries.',
 		},
 		'/testimonials': {
 			title: 'Testimonials | MechCurve',
 			description:
-				'See feedback from clients and students who worked with MechCurve for mechanical design projects and SolidWorks training.',
+				'See feedback from clients and teams who worked with MechCurve for mechanical design and manufacturing support.',
 		},
 		'/faq': {
 			title: 'FAQ | MechCurve',
 			description:
-				'Answers to common questions about MechCurve services, SolidWorks training, mentorship, and project engagement.',
+				'Answers to common questions about MechCurve services, project engagement, and delivery process.',
 		},
 	};
 

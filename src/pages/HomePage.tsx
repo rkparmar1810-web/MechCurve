@@ -1,15 +1,14 @@
 import { useLocation } from 'react-router-dom';
 import Hero from '../components/Hero/Hero';
 import EngineeringOverview from '../components/EngineeringOverview/EngineeringOverview';
-import About from '../components/About/About';
 import ServicesStackSection from '../components/ServicesStack/ServicesStackSection';
-import Portfolio from '../components/Portfolio/Portfolio';
-import Testimonials from '../components/Testimonials/Testimonials';
+import WhyChoose from '../components/WhyChoose/WhyChoose';
+import EngineeringProcess from '../components/EngineeringProcess/EngineeringProcess';
+import TrainingPrograms from '../components/TrainingPrograms/TrainingPrograms';
 import FaqSection from '../components/FaqSection/FaqSection';
-import Contact from '../components/Contact/Contact.tsx';
 import SectionDivider from '../components/SectionDivider/SectionDivider';
-import { serviceCards } from '../data/detailContent';
-import { faqItems } from '../data/faqContent';
+import { serviceNavItems } from '../data/servicesContent';
+import { faqItems, careerFaqItems } from '../data/faqContent';
 import useSectionNavigation from '../hooks/useSectionNavigation';
 import useSeo from '../hooks/useSeo';
 import useStructuredData from '../hooks/useStructuredData';
@@ -26,27 +25,12 @@ export default function HomePage() {
 			title:
 				'MechCurve | Mechanical Design Engineering & SolidWorks Training',
 			description:
-				'MechCurve offers mechanical CAD engineering, SolidWorks training, manufacturing-ready deliverables, and mentorship for students and teams.',
+				'MechCurve offers mechanical CAD engineering, manufacturing-ready deliverables, and dedicated career training guidance for students and teams.',
 		},
-		'/about': {
-			title: 'About MechCurve | Mechanical Design Team',
+		'/faq': {
+			title: 'FAQ | MechCurve',
 			description:
-				'Learn about the MechCurve team, our engineering workflow, and our approach to practical CAD training and manufacturing-ready design delivery.',
-		},
-		'/services': {
-			title: 'Services | CAD Design, SolidWorks Training, Mentorship',
-			description:
-				'Explore CAD modeling, product design guidance, SolidWorks training, and engineering mentorship services from MechCurve.',
-		},
-		'/portfolio': {
-			title: 'Portfolio | Mechanical Design Projects by MechCurve',
-			description:
-				'View selected mechanical design and CAD projects, including fixtures, assemblies, product redesign, and rapid prototyping work.',
-		},
-		'/contact': {
-			title: 'Contact MechCurve | Book Training or Project Consultation',
-			description:
-				'Get in touch with MechCurve for CAD projects, SolidWorks training, design mentorship, and manufacturing-focused engineering support.',
+				'Answers to common questions about MechCurve services, industries served, CAD software, rapid prototyping, and CAD training.',
 		},
 	};
 
@@ -90,10 +74,10 @@ export default function HomePage() {
 		'@context': 'https://schema.org',
 		'@type': 'ItemList',
 		name: 'MechCurve Services',
-		itemListElement: serviceCards.map((service, index) => ({
+		itemListElement: serviceNavItems.map((service, index) => ({
 			'@type': 'ListItem',
 			position: index + 1,
-			url: `${siteUrl}/services/${service.id}`,
+			url: `${siteUrl}/services/${service.slug}`,
 			name: service.title,
 		})),
 	};
@@ -141,7 +125,7 @@ export default function HomePage() {
 	const faqJsonLd = {
 		'@context': 'https://schema.org',
 		'@type': 'FAQPage',
-		mainEntity: faqItems.map((item) => ({
+		mainEntity: [...faqItems, ...careerFaqItems].map((item) => ({
 			'@type': 'Question',
 			name: item.question,
 			acceptedAnswer: {
@@ -161,20 +145,20 @@ export default function HomePage() {
 	return (
 		<>
 			<Hero />
-			<SectionDivider variant="cinematic-burst" text="Engineering Excellence" />
-			<EngineeringOverview />
-			<SectionDivider variant="fog-reveal" text="Our Story" />
-			<About />
-			<SectionDivider variant="energy-sweep" text="What We Offer" />
-			<ServicesStackSection />
-			<SectionDivider variant="morph-shape" text="Our Work" />
-			<Portfolio />
-			<SectionDivider variant="glass-panel" text="Client Voices" />
-			<Testimonials />
-			<SectionDivider variant="split-panel" text="Got Questions?" />
-			<FaqSection />
-			<SectionDivider variant="perspective-tilt" text="Let's Connect" />
-			<Contact />
+			<div className="site-light-content">
+				<SectionDivider variant="cinematic-burst" text="Who We Help" />
+				<EngineeringOverview />
+				<SectionDivider variant="cinematic-burst" text="Services" />
+				<ServicesStackSection />
+				<SectionDivider variant="cinematic-burst" text="Why MechCurve" />
+				<WhyChoose />
+				<SectionDivider variant="cinematic-burst" text="Engineering Process" />
+				<EngineeringProcess />
+				<SectionDivider variant="cinematic-burst" text="CAD Training" />
+				<TrainingPrograms />
+				<SectionDivider variant="cinematic-burst" text="Got Questions?" />
+				<FaqSection />
+			</div>
 		</>
 	);
 }

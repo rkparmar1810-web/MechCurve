@@ -1,11 +1,14 @@
 import { useRef, useState, useMemo } from 'react';
-import { LuChevronDown, LuCircleHelp } from 'react-icons/lu';
+import { LuChevronDown } from 'react-icons/lu';
 import { AnimatePresence, motion, useInView, useScroll, useTransform } from 'framer-motion';
-import { faqItems } from '../../data/faqContent';
+import { faqItems, careerFaqItems } from '../../data/faqContent';
 import styles from './FaqSection.module.scss';
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 const ALL = 'All';
+
+// All FAQs consolidated onto the home page — general + training/career.
+const allFaqs = [...faqItems, ...careerFaqItems];
 
 export default function FaqSection() {
 	const [openId, setOpenId] = useState('');
@@ -22,15 +25,15 @@ export default function FaqSection() {
 	const floatY2 = useTransform(scrollYProgress, [0, 1], [14, -20]);
 
 	const categories = useMemo(() => {
-		const unique = Array.from(new Set(faqItems.map((f) => f.category)));
+		const unique = Array.from(new Set(allFaqs.map((f) => f.category)));
 		return [ALL, ...unique];
 	}, []);
 
 	const filtered = useMemo(
 		() =>
 			activeCat === ALL
-				? faqItems
-				: faqItems.filter((f) => f.category === activeCat),
+				? allFaqs
+				: allFaqs.filter((f) => f.category === activeCat),
 		[activeCat],
 	);
 
@@ -104,16 +107,6 @@ export default function FaqSection() {
 			<div className={styles.inner}>
 				{/* ── Header ── */}
 				<div ref={headerRef} className={styles.header}>
-					<motion.span
-						className={styles.badge}
-						initial={{ opacity: 0, scale: 0.92 }}
-						animate={headerInView ? { opacity: 1, scale: 1 } : {}}
-						transition={{ duration: 0.5, ease: EASE }}
-					>
-						<LuCircleHelp size={11} />
-						FAQ
-					</motion.span>
-
 					<motion.h2
 						className={styles.heading}
 						initial={{ opacity: 0, y: 24 }}
@@ -129,8 +122,8 @@ export default function FaqSection() {
 						animate={headerInView ? { opacity: 1 } : {}}
 						transition={{ duration: 0.6, delay: 0.25 }}
 					>
-						Clear answers about training, projects, locations, enrollment, and
-						how MechCurve works with students and businesses.
+						Clear answers about services, projects, process, and how MechCurve
+						works with businesses.
 					</motion.p>
 				</div>
 

@@ -8,13 +8,17 @@ import SmoothScroll from './components/SmoothScroll/SmoothScroll';
 import ScrollProgress from './components/ScrollProgress/ScrollProgress';
 import ScrollIndicator from './components/ScrollIndicator/ScrollIndicator';
 import HomePage from './pages/HomePage';
-import ImmersiveDetailPage from './pages/ImmersiveDetailPage';
+import AboutPage from './pages/AboutPage';
+import ServicesPage from './pages/ServicesPage';
+import ContactPage from './pages/ContactPage';
+import CareerPage from './pages/CareerPage';
 import LegalPage from './pages/LegalPage';
+import ServiceDetailPage from './pages/ServiceDetailPage';
 
 function App() {
 	return (
 		<SmoothScroll>
-			<div>
+			<div className="site-light-theme">
 				<ScrollProgress />
 				<ScrollToTop />
 				<CursorGlow />
@@ -27,19 +31,19 @@ function App() {
 						/>
 						<Route
 							path="/about"
-							element={<HomePage />}
+							element={<AboutPage />}
 						/>
 						<Route
 							path="/services"
-							element={<HomePage />}
+							element={<ServicesPage />}
 						/>
 						<Route
-							path="/portfolio"
-							element={<HomePage />}
+							path="/services/:slug"
+							element={<ServiceDetailPage />}
 						/>
 						<Route
-							path="/testimonials"
-							element={<HomePage />}
+							path="/career"
+							element={<CareerPage />}
 						/>
 						<Route
 							path="/faq"
@@ -47,11 +51,7 @@ function App() {
 						/>
 						<Route
 							path="/contact"
-							element={<HomePage />}
-						/>
-						<Route
-							path="/projects/:projectId"
-							element={<ImmersiveDetailPage type="project" />}
+							element={<ContactPage />}
 						/>
 						<Route
 							path="/terms-of-service"

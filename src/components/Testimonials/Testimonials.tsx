@@ -15,38 +15,38 @@ interface Testimonial {
 
 const testimonials: Testimonial[] = [
 	{
-		name: 'Priya Sharma',
-		role: 'Mechanical Engineering Student',
-		text: 'The SolidWorks training was incredibly structured. I cleared my CSWA on the first attempt because every concept was taught with practical modelling exercises.',
-		initials: 'PS',
+		name: 'Nexus Automation',
+		role: 'Manufacturing Client',
+		text: 'MechCurve delivered production-ready CAD and drawings quickly. Their DFM inputs reduced our machining iterations and saved significant time.',
+		initials: 'NA',
 		stars: 5,
 	},
 	{
-		name: 'Rohan Patel',
-		role: 'Diploma Mechanical Student',
-		text: 'I was struggling with assemblies and drawings before joining. The sessions made the workflow simple, and now I can complete assignments much faster with confidence.',
-		initials: 'RP',
+		name: 'Apex Fabrication',
+		role: 'SME Product Team',
+		text: 'From concept refinement to final documentation, the workflow stayed clear and practical. The team aligned design choices with our manufacturing constraints.',
+		initials: 'AF',
 		stars: 5,
 	},
 	{
-		name: 'Maitri Joshi',
-		role: 'Final Year Engineering Student',
-		text: 'The training helped me build a proper portfolio instead of random practice files. That made a big difference during internships and project presentations.',
-		initials: 'MJ',
+		name: 'Vertex Motion Systems',
+		role: 'Engineering Lead',
+		text: 'Their parametric modelling structure was clean and revision-friendly. We integrated the files directly into our release process without rework.',
+		initials: 'VM',
 		stars: 5,
 	},
 	{
-		name: 'Aarav Desai',
-		role: 'B.E. Mechanical Student',
-		text: 'What I liked most was the clarity. Instead of only software commands, I learned the engineering logic behind sketches, mates, tolerances, and drawing standards.',
-		initials: 'AD',
+		name: 'Orion Robotics',
+		role: 'Prototype Program Manager',
+		text: 'The transition from CAD to prototyping was smooth. Their communication and milestone tracking helped us move from idea to physical validation faster.',
+		initials: 'OR',
 		stars: 5,
 	},
 	{
-		name: 'Khushi Verma',
-		role: 'CAD Training Student',
-		text: 'The review sessions and doubt-solving support were excellent. I improved from beginner level to creating complete part and assembly models on my own.',
-		initials: 'KV',
+		name: 'PrecisionWorks India',
+		role: 'Operations Partner',
+		text: 'We appreciated the practical approach and manufacturing-first mindset. Deliverables were complete, organized, and ready for execution.',
+		initials: 'PI',
 		stars: 5,
 	},
 ];
@@ -186,7 +186,7 @@ export default function Testimonials() {
 						animate={headerInView ? { opacity: 1, y: 0 } : {}}
 						transition={{ duration: 0.7, ease: EASE, delay: 0.1 }}
 					>
-						Student Reviews
+						Client Reviews
 					</motion.h2>
 
 					<motion.p
@@ -195,8 +195,8 @@ export default function Testimonials() {
 						animate={headerInView ? { opacity: 1 } : {}}
 						transition={{ duration: 0.6, delay: 0.25 }}
 					>
-						Credible feedback from students who used the training to improve CAD
-						capability, project confidence, and certification readiness.
+						Feedback from businesses and engineering teams that used our design,
+						manufacturing, and product development support.
 					</motion.p>
 				</div>
 
@@ -215,7 +215,7 @@ export default function Testimonials() {
 					{/* Controls */}
 					<div className={styles.controls}>
 						<span className={styles.feedbackBadge}>
-							<LuQuote size={12} /> Student Feedback
+							<LuQuote size={12} /> Client Feedback
 						</span>
 
 						<div className="flex items-center gap-2">

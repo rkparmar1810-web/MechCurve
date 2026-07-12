@@ -11,21 +11,26 @@ import type { IconType } from 'react-icons';
 import {
 	LuArrowRight,
 	LuCog,
-	LuGraduationCap,
-	LuBox,
-	LuFileText,
-	LuUsers,
+	LuBot,
+	LuCar,
+	LuFactory,
+	LuGlobe,
+	LuHeartPulse,
+	LuPackage,
+	LuPlane,
 } from 'react-icons/lu';
 import TextReveal from '../TextReveal/TextReveal';
 import MagneticButton from '../MagneticButton/MagneticButton';
 import styles from './Hero.module.scss';
 
 type CardItem = { label: string; Icon: IconType };
-const CARD_ITEMS: CardItem[] = [
-	{ label: '3D CAD Modeling', Icon: LuBox },
-	{ label: 'Product Development', Icon: LuGraduationCap },
-	{ label: 'Manufacturing Support', Icon: LuFileText },
-	{ label: 'SolidWorks Training', Icon: LuUsers },
+const INDUSTRIES: CardItem[] = [
+	{ label: 'Automotive', Icon: LuCar },
+	{ label: 'Aerospace', Icon: LuPlane },
+	{ label: 'Medical', Icon: LuHeartPulse },
+	{ label: 'Industrial', Icon: LuFactory },
+	{ label: 'Consumer', Icon: LuPackage },
+	{ label: 'Robotics', Icon: LuBot },
 ];
 
 const ROTATING_KEYWORDS = [
@@ -64,7 +69,7 @@ export default function Hero() {
 	});
 
 	const videoY = useTransform(scrollYProgress, [0, 1], ['0%', '20%']);
-	const contentY = useTransform(scrollYProgress, [0, 1], ['0%', '10%']);
+	const contentY = useTransform(scrollYProgress, [0, 1], ['0%', '3%']);
 	const bgScale = useTransform(scrollYProgress, [0, 1], [1, 1.06]);
 
 	// Mouse-reactive ambient glow
@@ -96,7 +101,7 @@ export default function Hero() {
 		<section
 			ref={sectionRef}
 			id="home"
-			className="relative overflow-hidden min-h-[92vh] flex items-center"
+			className="relative overflow-x-hidden min-h-[100vh] lg:min-h-[92vh] flex items-center"
 			style={{ scrollMarginTop: 120 }}
 		>
 			{/* â”€â”€ Layer 0: Dark fallback (shown while video loads) â”€â”€ */}
@@ -175,7 +180,7 @@ export default function Hero() {
 
 			{/* â”€â”€ Two-column content â”€â”€ */}
 			<motion.div
-				className="relative z-[4] mx-auto w-full max-w-[1440px] px-5 sm:px-8 md:px-12 xl:px-16 pt-28 pb-6 sm:pt-32 sm:pb-8"
+				className="relative z-[4] mx-auto w-full max-w-[1440px] px-5 sm:px-8 md:px-12 xl:px-16 pt-28 pb-16 sm:pt-32 sm:pb-20"
 				style={{ y: contentY }}
 			>
 				<div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:items-start lg:gap-20">
@@ -198,7 +203,7 @@ export default function Hero() {
 									size={13}
 									className="animate-[spin_6s_linear_infinite]"
 								/>
-								Mechanical Design Engineer & SolidWorks Trainer
+								Mechanical Design and Manufacturing Partner
 							</span>
 						</motion.div>
 
@@ -206,11 +211,11 @@ export default function Hero() {
 						<div className="mt-5 sm:mt-6">
 							<TextReveal
 								as="h1"
-								className="text-[clamp(2rem,4.6vw,3.8rem)] font-extrabold leading-[1.1] tracking-[-0.03em] text-white font-heading"
+								className="max-w-[20ch] text-[clamp(1.9rem,4.1vw,3.35rem)] font-extrabold leading-[1.12] tracking-[-0.02em] text-white font-heading"
 								delay={0.78}
 								staggerChildren={0.05}
 							>
-								Engineering Design Solutions That Drive Manufacturing
+								Mechanical Design Services That Transform Ideas Into Manufacturable Products
 							</TextReveal>
 						</div>
 
@@ -242,14 +247,20 @@ export default function Hero() {
 
 						{/* Paragraph */}
 						<motion.p
-							className="mb-7 max-w-[52ch] text-[clamp(0.93rem,1.05vw,1.08rem)] leading-[1.78] text-slate-300/85 sm:mb-8"
+							className="mb-7 max-w-[62ch] text-[clamp(0.98rem,1.12vw,1.16rem)] leading-[1.72] text-slate-300/90 sm:mb-8"
 							initial={{ opacity: 0, y: 18, filter: 'blur(6px)' }}
 							animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
 							transition={{ duration: 0.7, ease: SMOOTH_EASE, delay: 0.92 }}
 						>
-							Hands-on SolidWorks training, expert 3D modeling, and
-							manufacturing-ready technical drawings for students,
-							professionals, and teams seeking industry-grade CAD outcomes.
+							MechCurve helps manufacturers, startups, and engineering teams
+							with product development, reverse engineering, 3D CAD modeling,
+							rapid prototyping, and industry-focused CAD training.
+							<span className="block mt-3">
+								From concept development to production-ready documentation,
+								MechCurve delivers precision engineering solutions and practical
+								CAD expertise to help businesses innovate faster and engineers
+								build future-ready skills.
+							</span>
 						</motion.p>
 
 						{/* CTA Buttons */}
@@ -265,9 +276,9 @@ export default function Hero() {
 									background:
 										'linear-gradient(135deg, #EAC117 0%, #D97706 100%)',
 								}}
-								onClick={() => scrollToSection('portfolio')}
+								onClick={() => scrollToSection('contact')}
 							>
-								View Projects
+								Get Engineering Consultation
 								<span className={styles.arrowBounce}>
 									<LuArrowRight size={17} />
 								</span>
@@ -282,10 +293,24 @@ export default function Hero() {
 									boxShadow:
 										'0 8px 32px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.08)',
 								}}
-								onClick={() => scrollToSection('contact')}
+								onClick={() => scrollToSection('services-overview')}
 							>
-								Book a Consultation
+								Explore Services
 							</MagneticButton>
+						</motion.div>
+
+						<motion.div
+							className="w-full max-w-[760px] rounded-xl border border-white/[0.12] bg-white/[0.04] px-4 py-3 sm:px-5"
+							initial={{ opacity: 0, y: 12 }}
+							animate={{ opacity: 1, y: 0 }}
+							transition={{ duration: 0.55, ease: SMOOTH_EASE, delay: 1.2 }}
+						>
+							<p className="mb-2 text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.16em] text-amber-300/80">
+								Trust Bar
+							</p>
+							<p className="text-[12px] sm:text-[13px] font-semibold text-slate-200/90">
+								Serving Startups • Manufacturers • OEMs • Engineering Professionals
+							</p>
 						</motion.div>
 
 					</motion.div>
@@ -313,45 +338,38 @@ export default function Hero() {
 								}}
 							>
 
-							<p className="mb-5 text-[10px] font-bold tracking-[0.28em] uppercase text-amber-400/60">
-								What We Offer
-							</p>
+							<div className="mb-5 flex items-center gap-3">
+									<span className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-[#EAC117]/25 bg-gradient-to-br from-[#EAC117]/20 to-[#F59E0B]/[0.08] text-[#EAC117]">
+										<LuGlobe size={18} />
+									</span>
+									<div>
+										<p className="text-[13px] font-bold leading-tight text-white">Industries We Serve</p>
+										<p className="text-[11px] leading-tight text-slate-400">Precision engineering across sectors</p>
+									</div>
+								</div>
 
-							<div className="space-y-1">
-								{CARD_ITEMS.map(({ label, Icon }, i) => (
-									<motion.div
-										key={label}
-										className="flex items-center gap-3.5 py-3 border-b border-white/[0.05] last:border-0 cursor-default"
-										initial={{ opacity: 0, x: 20 }}
-										animate={{ opacity: 1, x: 0 }}
-										transition={{
-											duration: 0.42,
-											ease: SMOOTH_EASE,
-											delay: 0.92 + i * 0.1,
-										}}
-										whileHover={{ x: 5 }}
-									>
-										<div className="flex-shrink-0 w-9 h-9 rounded-xl flex items-center justify-center bg-[#EAC117]/10 border border-[#EAC117]/18">
-											<Icon
-												size={16}
-												className="text-[#EAC117]"
-											/>
-										</div>
-										<span className="text-[14px] font-medium text-white/85">
-											{label}
-										</span>
-									</motion.div>
-								))}
-							</div>
+								<div className="grid grid-cols-2 gap-2">
+									{INDUSTRIES.map(({ label, Icon }, i) => (
+										<motion.div
+											key={label}
+											className="group flex items-center gap-2.5 rounded-xl border border-white/[0.07] bg-white/[0.03] px-3 py-2.5 transition-colors duration-300 hover:border-[#EAC117]/30 hover:bg-white/[0.06]"
+											initial={{ opacity: 0, y: 10 }}
+											animate={{ opacity: 1, y: 0 }}
+											transition={{ duration: 0.4, ease: SMOOTH_EASE, delay: 0.9 + i * 0.07 }}
+										>
+											<span className="flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-lg bg-[#EAC117]/[0.12] text-[#EAC117] transition-transform duration-300 group-hover:scale-110">
+												<Icon size={14} />
+											</span>
+											<span className="text-[12.5px] font-semibold text-white/90">{label}</span>
+										</motion.div>
+									))}
+								</div>
 
-							{/* Bottom ambient glow */}
-							<div
-								className="absolute bottom-0 left-0 right-0 h-[80px] pointer-events-none"
-								style={{
-									background:
-										'linear-gradient(to top, rgba(234,193,23,0.04), transparent)',
-								}}
-							/>
+								<div className="mt-5 flex items-center gap-3 text-[10px] font-semibold uppercase tracking-[0.14em] text-slate-500">
+									<span className="h-px flex-1 bg-white/[0.08]" />
+									OEMs &middot; Startups &amp; more
+									<span className="h-px flex-1 bg-white/[0.08]" />
+								</div>
 							</div>
 						</motion.div>
 					</motion.div>

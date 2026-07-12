@@ -6,7 +6,21 @@
 .footer {
 	position: relative;
 	overflow: hidden;
-	background: #040610;
+	background:
+		radial-gradient(ellipse 900px 420px at 8% 18%, rgba(234, 193, 23, 0.08), transparent 58%),
+		radial-gradient(ellipse 760px 360px at 88% 78%, rgba(59, 130, 246, 0.08), transparent 56%),
+		linear-gradient(180deg, #06080d 0%, #040610 100%);
+
+	&::before {
+		content: '';
+		position: absolute;
+		inset: 0;
+		pointer-events: none;
+		z-index: 1;
+		background:
+			linear-gradient(180deg, rgba(255, 255, 255, 0.02) 0%, transparent 26%),
+			radial-gradient(circle at 20% 0%, rgba(234, 193, 23, 0.06), transparent 40%);
+	}
 }
 
 /* ── Horizon gold gradient line at top ── */
@@ -19,9 +33,9 @@
 	background: linear-gradient(
 		90deg,
 		transparent 5%,
-		rgba(234, 193, 23, 0.25) 30%,
-		rgba(245, 158, 11, 0.2) 50%,
-		rgba(234, 193, 23, 0.25) 70%,
+		rgba(234, 193, 23, 0.3) 30%,
+		rgba(245, 158, 11, 0.25) 50%,
+		rgba(234, 193, 23, 0.3) 70%,
 		transparent 95%
 	);
 	z-index: 2;
@@ -43,7 +57,7 @@
 /* ── Inner container ── */
 .inner {
 	position: relative;
-	z-index: 2;
+	z-index: 3;
 	max-width: 1360px;
 	margin: 0 auto;
 	padding: 48px 24px 32px;
@@ -92,7 +106,7 @@
 	height: 56px;
 	border-radius: 14px;
 	border: 1px solid rgba(234, 193, 23, 0.2);
-	background: #ffffff;
+	background: rgba(255, 255, 255, 0.95);
 	flex-shrink: 0;
 	overflow: hidden;
 	box-shadow:
@@ -110,14 +124,14 @@
 .brandName {
 	font-size: 1.08rem;
 	font-weight: 800;
-	color: #ffffff;
+	color: #f8fafc;
 	letter-spacing: -0.01em;
 }
 
 .tagline {
 	font-size: 0.86rem;
 	line-height: 1.7;
-	color: #64748b;
+	color: #94a3b8;
 	max-width: 300px;
 }
 
@@ -127,7 +141,7 @@
 	font-weight: 700;
 	letter-spacing: 0.12em;
 	text-transform: uppercase;
-	color: #94a3b8;
+	color: #cbd5e1;
 	margin-bottom: 16px;
 }
 
@@ -149,7 +163,7 @@
 	text-align: left;
 	cursor: pointer;
 	font-size: 0.88rem;
-	color: #64748b;
+	color: #94a3b8;
 	transition: color 250ms ease;
 
 	&::after {
@@ -164,7 +178,7 @@
 	}
 
 	&:hover {
-		color: #eac117;
+		color: #f8fafc;
 
 		&::after {
 			width: 100%;
@@ -186,7 +200,7 @@
 	min-height: 44px;
 	padding: 8px 0;
 	font-size: 0.88rem;
-	color: #64748b;
+	color: #94a3b8;
 	text-decoration: none;
 	transition: color 250ms ease;
 
@@ -202,7 +216,7 @@
 	}
 
 	&:hover {
-		color: #eac117;
+		color: #f8fafc;
 
 		&::after {
 			width: 100%;
@@ -224,8 +238,8 @@
 	height: 44px;
 	border-radius: 12px;
 	border: 1px solid rgba(255, 255, 255, 0.08);
-	background: rgba(255, 255, 255, 0.03);
-	color: #64748b;
+	background: rgba(255, 255, 255, 0.04);
+	color: #cbd5e1;
 	text-decoration: none;
 	transition:
 		border-color 280ms ease,
@@ -236,11 +250,23 @@
 
 	&:hover {
 		border-color: rgba(234, 193, 23, 0.3);
-		color: #eac117;
+		color: #ffffff;
 		background: rgba(234, 193, 23, 0.06);
-		box-shadow: 0 0 16px rgba(234, 193, 23, 0.12);
+		box-shadow:
+			0 0 16px rgba(234, 193, 23, 0.12),
+			0 0 30px rgba(59, 130, 246, 0.1);
 		transform: translateY(-2px);
 	}
+}
+
+.grid > :not(.brandCol) {
+	padding: 14px 14px 16px;
+	border-radius: 14px;
+	border: 1px solid rgba(255, 255, 255, 0.08);
+	background: rgba(255, 255, 255, 0.03);
+	backdrop-filter: blur(14px);
+	-webkit-backdrop-filter: blur(14px);
+	box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
 }
 
 /* ── Bottom bar ── */
@@ -255,7 +281,7 @@
 
 	span {
 		font-size: 0.78rem;
-		color: #475569;
+		color: #64748b;
 	}
 }
 
@@ -268,7 +294,7 @@
 .legalLink {
 	position: relative;
 	font-size: 0.78rem;
-	color: #94a3b8;
+	color: #cbd5e1;
 	text-decoration: none;
 	transition: color 250ms ease;
 
@@ -286,7 +312,7 @@
 	}
 
 	&:hover {
-		color: #eac117;
+		color: #ffffff;
 
 		&::after {
 			transform: scaleX(1);

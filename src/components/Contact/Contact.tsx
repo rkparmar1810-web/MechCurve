@@ -23,11 +23,10 @@ const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbx2Ha2VpdCafpVA
 
 const SERVICE_OPTIONS = [
 	'CAD Design & 3D Modelling',
-	'SolidWorks Training',
 	'Product Design & Development',
-	'Engineering Mentorship',
 	'Reverse Engineering',
 	'Manufacturing Support',
+	'Career Program Inquiry',
 	'Other',
 ] as const;
 
@@ -253,7 +252,7 @@ export default function Contact() {
 						animate={headerInView ? { opacity: 1, y: 0 } : {}}
 						transition={{ duration: 0.7, ease: EASE, delay: 0.1 }}
 					>
-						Start a Project or Book a Training Session
+						Start a Project or Discuss Career Programs
 					</motion.h2>
 
 					<motion.p
@@ -414,7 +413,7 @@ export default function Contact() {
 											name="message"
 											value={formData.message}
 											onChange={handleChange}
-											placeholder="Describe your project or training needs…"
+											placeholder="Describe your project or career-program needs…"
 											rows={5}
 											className={`${styles.textarea} ${errors.message ? styles.inputError : ''}`}
 										/>
@@ -498,19 +497,6 @@ export default function Contact() {
 								</motion.div>
 							);
 						})}
-
-						{/* WhatsApp CTA */}
-						<motion.a
-							href="https://wa.me/919106297853"
-							target="_blank"
-							rel="noopener noreferrer"
-							className={styles.ctaSecondary}
-							initial={{ opacity: 0, y: 20 }}
-							animate={cardsInView ? { opacity: 1, y: 0 } : {}}
-							transition={{ duration: 0.6, ease: EASE, delay: 0.55 }}
-						>
-							WhatsApp Us
-						</motion.a>
 					</div>
 				</div>
 			</div>

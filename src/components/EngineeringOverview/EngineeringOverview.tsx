@@ -1,68 +1,81 @@
 ﻿import {
-	LuBinary,
 	LuCog,
 	LuFactory,
-	LuFileCheck,
 	LuGauge,
-	LuGraduationCap,
 	LuLayers3,
 	LuRuler,
 	LuShieldCheck,
-	LuUsers,
 } from 'react-icons/lu';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, type ComponentType } from 'react';
 import { motion, useInView, useScroll, useTransform } from 'framer-motion';
 import TextReveal from '../TextReveal/TextReveal';
 import styles from './EngineeringOverview.module.scss';
 
+type CardListItem = {
+	icon: ComponentType<{ size?: number; className?: string }>;
+	text: string;
+};
+
+type CardStepItem = {
+	icon: ComponentType<{ size?: number; className?: string }>;
+	label: string;
+	text: string;
+};
+
+type OverviewCard = {
+	icon: ComponentType<{ size?: number; className?: string }>;
+	tag: string;
+	title: string;
+	subtitle: string;
+	description: string;
+	image?: string;
+	imageAlt?: string;
+	badges?: string[];
+	bullets?: CardListItem[];
+	steps?: CardStepItem[];
+};
+
 /* ── Data ── */
-const CARDS = [
+const CARDS: OverviewCard[] = [
 	{
-		icon: LuBinary,
+		icon: LuLayers3,
 		tag: '01',
-		title: 'Workflow & Modeling Structure',
-		subtitle: 'Parametric Precision',
+		title: 'Product Companies',
+		subtitle: 'Innovation to Production',
 		description:
-			'End-to-end parametric modeling with feature-tree discipline, reference geometry standards, and assembly-level interlocking tolerances.',
-		image: '/DM/modelling structure.webp',
-		imageAlt: 'Workflow and modeling structure CAD assembly',
-		badges: ['Parametric Geometry', 'Interlocking Tolerances'],
+			'Transform ideas into production-ready designs.',
 	},
 	{
-		icon: LuFileCheck,
+		icon: LuFactory,
 		tag: '02',
-		title: 'Manufacturing-Ready Deliverables',
-		subtitle: 'Production-Grade Output',
+		title: 'Manufacturers',
+		subtitle: 'Optimize and Scale',
 		description:
-			'ISO-standard modeling with revision control, GD&T annotations, and manufacturing-ready 2D drawings for accurate review and practical handoff.',
-		bullets: [
-			{ icon: LuRuler, text: 'GD&T Annotations' },
-			{ icon: LuLayers3, text: 'Assembly BOMs' },
-			{ icon: LuFactory, text: 'Tooling Layouts' },
-			{ icon: LuShieldCheck, text: 'Quality Validation' },
-		],
+			'Improve legacy designs and optimize production.',
 	},
 	{
-		icon: LuGraduationCap,
+		icon: LuGauge,
 		tag: '03',
-		title: 'Professional CAD Mentorship',
-		subtitle: 'Industry-Ready Skills',
+		title: 'Startups',
+		subtitle: 'Build with Confidence',
 		description:
-			'Structured training from fundamentals to advanced simulation — concept clarity, technical accuracy, manufacturing logic, and industry-ready documentation.',
-		steps: [
-			{ icon: LuBinary, label: 'Concept Clarity', text: 'Fundamentals-first approach' },
-			{ icon: LuRuler, label: 'Technical Accuracy', text: 'Modeling to precision standards' },
-			{ icon: LuFactory, label: 'Manufacturing Logic', text: 'Tooling and process design' },
-			{ icon: LuShieldCheck, label: 'Industry-Ready', text: 'Comprehensive documentation' },
-		],
+			'Turn engineering ideas into manufacturable products.',
+	},
+	{
+		icon: LuShieldCheck,
+		tag: '04',
+		title: 'Students & Professionals',
+		subtitle: 'Career-Ready Capability',
+		description:
+			'Build industry-ready design skills.',
 	},
 ];
 
 const STATS = [
-	{ value: 500, suffix: '+', label: 'Students Trained', icon: LuUsers },
+	{ value: 500, suffix: '+', label: 'Students Trained', icon: LuGauge },
 	{ value: 50, suffix: '+', label: 'Projects Delivered', icon: LuLayers3 },
-	{ value: 95, suffix: '%', label: 'Success Rate', icon: LuGauge },
-	{ value: 4, suffix: '+', label: 'Years Experience', icon: LuRuler },
+	{ value: 95, suffix: '%', label: 'Success Rate', icon: LuShieldCheck },
+	{ value: 4, suffix: '+', label: 'Years of Experience', icon: LuRuler },
 ];
 
 const EASE = [0.22, 1, 0.36, 1] as const;
@@ -148,22 +161,12 @@ export default function EngineeringOverview() {
 						animate={headerInView ? { opacity: 1, y: 0 } : {}}
 						transition={{ duration: 0.75, ease: EASE }}
 					>
-						<motion.span
-							className="inline-flex items-center gap-2 rounded-full border border-amber-400/20 bg-amber-500/8 px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.18em] text-amber-300"
-							initial={{ opacity: 0, scale: 0.9 }}
-							animate={headerInView ? { opacity: 1, scale: 1 } : {}}
-							transition={{ duration: 0.5, ease: EASE, delay: 0.1 }}
-						>
-							<LuCog size={12} className="animate-[spin_6s_linear_infinite]" />
-							Engineering Overview
-						</motion.span>
-
 						<TextReveal
 							as="h2"
-							className="mt-5 text-3xl font-extrabold tracking-tight text-white md:text-4xl lg:text-[2.75rem]"
+							className="text-3xl font-extrabold tracking-tight text-white md:text-4xl lg:text-[2.75rem]"
 							delay={0.18}
 						>
-							Integrated Engineering Delivery System
+							Engineering Solutions for Every Stage of Innovation
 						</TextReveal>
 
 						<motion.p
@@ -172,21 +175,38 @@ export default function EngineeringOverview() {
 							animate={headerInView ? { opacity: 1, filter: 'blur(0px)' } : {}}
 							transition={{ duration: 0.65, delay: 0.4 }}
 						>
-							A focused workflow for design and training — technical clarity
-							first, then accurate modeling, then manufacturable output and
-							industry-ready documentation.
+							From product teams and manufacturers to startups and aspiring
+							engineers, MechCurve provides practical engineering support at
+							every stage.
 						</motion.p>
 					</motion.div>
 				</div>
 
 				{/* ── Three-card grid ── */}
 				<motion.div
-					className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3 xl:gap-6"
+					className={`grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-2 xl:gap-6 ${styles.flowGrid}`}
 					style={{ y: gridY }}
 				>
+					<svg
+						className={styles.flowSvg}
+						viewBox="0 0 100 100"
+						preserveAspectRatio="none"
+						aria-hidden="true"
+					>
+						<path className={styles.flowLine} d="M25 25 L75 25" />
+						<path className={styles.flowLine} d="M25 25 L25 75" />
+						<path className={styles.flowLine} d="M75 25 L75 75" />
+						<path className={styles.flowLine} d="M25 75 L75 75" />
+						<circle className={styles.flowNode} cx="25" cy="25" r="1.1" />
+						<circle className={styles.flowNode} cx="75" cy="25" r="1.1" />
+						<circle className={styles.flowNode} cx="25" cy="75" r="1.1" />
+						<circle className={styles.flowNode} cx="75" cy="75" r="1.1" />
+					</svg>
+
 					{CARDS.map((card, cardIdx) => (
 						<motion.div
 							key={card.tag}
+							className={styles.flowCard}
 							initial={{ opacity: 0, y: 48, filter: 'blur(6px)' }}
 							whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
 							viewport={{ once: true, margin: '-60px' }}
@@ -289,7 +309,7 @@ export default function EngineeringOverview() {
 										</div>
 									)}
 
-									{/* Card 3: Training steps */}
+									{/* Card 3: Delivery process steps */}
 									{card.steps && (
 										<div className="space-y-2">
 											{card.steps.map((step, si) => (
