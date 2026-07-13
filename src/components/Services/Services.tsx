@@ -12,6 +12,7 @@ import {
 	LuWrench,
 } from 'react-icons/lu';
 import FadeIn from '../FadeIn/FadeIn';
+import { WHATSAPP_NUMBER } from '../../data/faqContent';
 
 type ServiceBlock = {
 	id:
@@ -480,28 +481,9 @@ export default function Services() {
 
 				<FadeIn delay={0.25}>
 					<div className="services-stack-cta mt-14 flex justify-center">
-						<button
-							className="service-cta-btn"
-							type="button"
-							onClick={() => {
-								const el = document.getElementById('contact');
-								if (el) {
-									const navbarHeight = 120;
-									const y =
-										el.getBoundingClientRect().top +
-										window.scrollY -
-										navbarHeight;
-									window.scrollTo({ top: y, behavior: 'auto' });
-									window.history.replaceState(
-										null,
-										'',
-										window.location.pathname,
-									);
-								}
-							}}
-						>
+						<a className="service-cta-btn" href={`tel:+${WHATSAPP_NUMBER}`}>
 							Request Consultation <LuArrowRight size={18} />
-						</button>
+						</a>
 					</div>
 				</FadeIn>
 			</div>

@@ -17,6 +17,7 @@ import {
 	LuRuler,
 } from 'react-icons/lu';
 import { servicesByCategory } from '../../data/servicesContent';
+import { buildWhatsAppUrl } from '../../data/faqContent';
 import './ServicesStackSection.scss';
 
 const EASE = [0.22, 1, 0.36, 1] as const;
@@ -254,7 +255,11 @@ export default function ServicesStackSection() {
 								<LuArrowRight size={16} className="transition-transform duration-300 group-hover:translate-x-1" />
 							</Link>
 							<a
-								href="mailto:admin@mechcurve.com"
+								href={buildWhatsAppUrl(
+									'Hi MechCurve Team! I would like to talk to an engineer about a project.',
+								)}
+								target="_blank"
+								rel="noopener noreferrer"
 								className="inline-flex items-center gap-2 rounded-xl border border-slate-300 bg-white/70 px-6 py-3.5 text-sm font-semibold text-slate-700 backdrop-blur transition-colors duration-300 hover:border-amber-300 hover:text-amber-700"
 							>
 								Talk to an Engineer

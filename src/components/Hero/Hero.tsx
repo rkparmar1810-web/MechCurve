@@ -20,7 +20,7 @@ import {
 	LuPlane,
 } from 'react-icons/lu';
 import TextReveal from '../TextReveal/TextReveal';
-import MagneticButton from '../MagneticButton/MagneticButton';
+import { WHATSAPP_NUMBER } from '../../data/faqContent';
 import styles from './Hero.module.scss';
 
 type CardItem = { label: string; Icon: IconType };
@@ -270,21 +270,22 @@ export default function Hero() {
 							animate={{ opacity: 1, y: 0 }}
 							transition={{ duration: 0.65, ease: SMOOTH_EASE, delay: 1.08 }}
 						>
-							<MagneticButton
-								className="group inline-flex items-center justify-center gap-2.5 px-6 sm:px-7 py-4 text-[14px] sm:text-[15px] font-semibold text-[#06080D] rounded-xl shadow-[0_8px_28px_rgba(234,193,23,0.38)] hover:shadow-[0_18px_44px_rgba(234,193,23,0.55)] hover:-translate-y-1 transition-all duration-300"
+							<a
+								className="group inline-flex items-center justify-center gap-2.5 px-6 sm:px-7 py-4 text-[14px] sm:text-[15px] font-semibold text-[#06080D] rounded-xl shadow-[0_8px_28px_rgba(234,193,23,0.38)]"
 								style={{
 									background:
 										'linear-gradient(135deg, #EAC117 0%, #D97706 100%)',
 								}}
-								onClick={() => scrollToSection('contact')}
+								href={`tel:+${WHATSAPP_NUMBER}`}
 							>
 								Get Engineering Consultation
 								<span className={styles.arrowBounce}>
 									<LuArrowRight size={17} />
 								</span>
-							</MagneticButton>
-							<MagneticButton
-								className="inline-flex items-center justify-center px-6 sm:px-7 py-4 text-[14px] sm:text-[15px] font-semibold text-white rounded-xl hover:-translate-y-1 transition-all duration-300"
+							</a>
+							<button
+								type="button"
+								className="inline-flex items-center justify-center px-6 sm:px-7 py-4 text-[14px] sm:text-[15px] font-semibold text-white rounded-xl"
 								style={{
 									backdropFilter: 'blur(14px)',
 									WebkitBackdropFilter: 'blur(14px)',
@@ -296,7 +297,7 @@ export default function Hero() {
 								onClick={() => scrollToSection('services-overview')}
 							>
 								Explore Services
-							</MagneticButton>
+							</button>
 						</motion.div>
 
 						<motion.div

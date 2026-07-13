@@ -8,6 +8,7 @@
     "build": "tsc && vite build",
     "build:prerender": "tsc && vite build && node scripts/write-prerender-routes.mjs && vite build --config vite.ssr.config.ts --ssr src/entry-server.tsx --outDir dist/server && node scripts/prerender.mjs",
     "images:webp": "node scripts/convert-images-to-webp.mjs",
+    "blog:og": "node scripts/generate-blog-og-images.mjs",
     "preview": "vite preview"
   },
   "dependencies": {

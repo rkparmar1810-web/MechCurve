@@ -10,6 +10,8 @@ interface SeoOptions {
 	path: string;
 	robots?: string;
 	image?: string;
+	/** 'article' for blog posts so shares preview as a story card. */
+	type?: 'website' | 'article';
 }
 
 function toAbsoluteUrl(path: string) {
@@ -50,6 +52,7 @@ export default function useSeo({
 	path,
 	robots = 'index, follow',
 	image,
+	type = 'website',
 }: SeoOptions) {
 	useEffect(() => {
 		const canonicalUrl = toAbsoluteUrl(path);
@@ -62,13 +65,17 @@ export default function useSeo({
 
 		upsertMeta('property', 'og:title', title);
 		upsertMeta('property', 'og:description', description);
-		upsertMeta('property', 'og:type', 'website');
+		upsertMeta('property', 'og:type', type);
 		upsertMeta('property', 'og:url', canonicalUrl);
+		upsertMeta('property', 'og:site_name', 'MechCurve');
 		upsertMeta('property', 'og:image', imageUrl);
+		upsertMeta('property', 'og:image:alt', title);
+		upsertMeta('property', 'og:image:width', '1200');
+		upsertMeta('property', 'og:image:height', '630');
 
 		upsertMeta('name', 'twitter:card', 'summary_large_image');
 		upsertMeta('name', 'twitter:title', title);
 		upsertMeta('name', 'twitter:description', description);
 		upsertMeta('name', 'twitter:image', imageUrl);
-	}, [title, description, path, robots, image]);
+	}, [title, description, path, robots, image, type]);
 }

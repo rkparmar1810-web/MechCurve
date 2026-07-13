@@ -11,10 +11,12 @@ const LINKS = [
 	{ label: 'Services', id: 'services' },
 	{ label: 'Career', id: 'career' },
 	{ label: 'Contact', id: 'contact' },
+	{ label: 'Blog', id: 'blog' },
 ];
 
 function getActiveSectionId(pathname: string) {
 	if (pathname.startsWith('/services/')) return 'services';
+	if (pathname.startsWith('/blog/')) return 'blog';
 	if (pathname === '/') return '';
 	const matchedLink = LINKS.find((link) => `/${link.id}` === pathname);
 	return matchedLink?.id ?? '';

@@ -12,6 +12,7 @@ export type RenderResult = {
 		robots: string;
 		ogImageUrl: string;
 		ogUrl: string;
+		ogType: string;
 	};
 };
 
@@ -33,6 +34,7 @@ export function render(url: string): RenderResult {
 			robots: seo.robots,
 			ogImageUrl: seo.imageUrl,
 			ogUrl: seo.canonicalUrl,
+			ogType: seo.ogType,
 		},
 	};
 }

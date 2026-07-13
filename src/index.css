@@ -66,7 +66,12 @@
 
 	html {
 		scroll-behavior: auto;
+		/* `clip` prevents sideways scroll WITHOUT making html a scroll container.
+		   `hidden` here would silently break every `position: sticky` descendant
+		   (the blog sidebar). `hidden` is kept first as the fallback for browsers
+		   that don't support `clip`. */
 		overflow-x: hidden;
+		overflow-x: clip;
 		-ms-overflow-style: none;
 	}
 
@@ -86,7 +91,9 @@
 		font-family: var(--font-body);
 		background: var(--bg);
 		color: var(--muted);
+		/* See the note on html above — `clip`, not `hidden`, or sticky dies. */
 		overflow-x: hidden;
+		overflow-x: clip;
 		-ms-overflow-style: none;
 		min-height: 100vh;
 		line-height: 1.65;
@@ -1321,4 +1328,37 @@ html {
 
 .detail-particle-float {
 	animation: heroFloatSoft 6.5s ease-in-out infinite;
+}
+
+/* Blog article sidebar: stays pinned while the article scrolls. When its cards
+   are taller than the viewport it scrolls on its own, so the CTA at its foot is
+   always reachable.
+   The rules below carry !important because this file hides every scrollbar
+   site-wide (`*::-webkit-scrollbar { display: none !important }`). Without the
+   override the sidebar would overflow with no visible scrollbar — content simply
+   looks cut off, with nothing to indicate there is more below. */
+.blog-aside {
+	scrollbar-width: thin !important;
+	scrollbar-color: rgba(148, 163, 184, 0.5) transparent !important;
+	overscroll-behavior: contain;
+}
+
+.blog-aside::-webkit-scrollbar {
+	display: block !important;
+	width: 6px !important;
+	height: 6px !important;
+	background: transparent !important;
+}
+
+.blog-aside::-webkit-scrollbar-track {
+	background: transparent !important;
+}
+
+.blog-aside::-webkit-scrollbar-thumb {
+	background: rgba(148, 163, 184, 0.5) !important;
+	border-radius: 999px !important;
+}
+
+.blog-aside::-webkit-scrollbar-thumb:hover {
+	background: rgba(100, 116, 139, 0.7) !important;
 }

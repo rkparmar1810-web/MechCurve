@@ -14,6 +14,8 @@ import ContactPage from './pages/ContactPage';
 import CareerPage from './pages/CareerPage';
 import LegalPage from './pages/LegalPage';
 import ServiceDetailPage from './pages/ServiceDetailPage';
+import BlogPage from './pages/BlogPage';
+import BlogDetailPage from './pages/BlogDetailPage';
 
 function App() {
 	return (
@@ -44,6 +46,14 @@ function App() {
 						<Route
 							path="/career"
 							element={<CareerPage />}
+						/>
+						<Route
+							path="/blog"
+							element={<BlogPage />}
+						/>
+						<Route
+							path="/blog/:slug"
+							element={<BlogDetailPage />}
 						/>
 						<Route
 							path="/faq"

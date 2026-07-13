@@ -7,6 +7,7 @@ import Stats from '../components/Stats/Stats';
 import FadeIn from '../components/FadeIn/FadeIn';
 import { servicesByCategory } from '../data/servicesContent';
 import { CATEGORY_META, SERVICE_META } from '../data/serviceMenuMeta';
+import { WHATSAPP_NUMBER } from '../data/faqContent';
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
@@ -259,7 +260,7 @@ export default function ServicesPage() {
 						transition={{ duration: 0.6, ease: EASE, delay: 0.28 }}
 					>
 						<a
-							href="mailto:admin@mechcurve.com"
+							href={`tel:+${WHATSAPP_NUMBER}`}
 							className="group inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-[#EAC117] to-[#F59E0B] px-5 py-3 text-sm font-bold text-[#06080D] shadow-[0_10px_28px_rgba(234,193,23,0.28)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_14px_34px_rgba(234,193,23,0.4)]"
 						>
 							Request a Consultation
@@ -344,7 +345,7 @@ export default function ServicesPage() {
 							with confidence.
 						</p>
 						<a
-							href="mailto:admin@mechcurve.com"
+							href={`tel:+${WHATSAPP_NUMBER}`}
 							className="relative mt-6 inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-[#EAC117] to-[#F59E0B] px-6 py-3 text-sm font-bold text-[#06080D] shadow-[0_12px_30px_rgba(234,193,23,0.3)] transition-transform duration-300 hover:-translate-y-0.5"
 						>
 							Request a Consultation

@@ -63,7 +63,15 @@ export const serviceDetails: ServiceDetail[] = [
 			'Startups',
 			'Manufacturing',
 		],
-		tools: ['SolidWorks', 'NX', 'Catia', 'AutoCAD', 'DFM workflow standards'],
+		tools: [
+			'SolidWorks',
+			'NX',
+			'Catia',
+			'AutoCAD',
+			'KeyShot',
+			'Simulia',
+			'DFM workflow standards',
+		],
 		faqs: [
 			{
 				question: 'Can you develop products from scratch?',
@@ -337,7 +345,12 @@ export const serviceDetails: ServiceDetail[] = [
 			'Automation and controls products',
 			'Field devices and industrial electronics',
 		],
-		tools: ['SolidWorks', 'Creo exchange formats', 'STEP-based collaboration'],
+		tools: [
+			'SolidWorks',
+			'SolidWorks Electrical',
+			'Creo exchange formats',
+			'STEP-based collaboration',
+		],
 		faqs: [
 			{
 				question: 'Can you collaborate with our electronics vendors?',

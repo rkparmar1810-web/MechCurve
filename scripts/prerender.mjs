@@ -58,9 +58,16 @@ function injectHead(html, head) {
 
 	out = upsertMetaByProperty(out, 'og:title', head.title);
 	out = upsertMetaByProperty(out, 'og:description', head.description);
-	out = upsertMetaByProperty(out, 'og:type', 'website');
+	out = upsertMetaByProperty(out, 'og:type', head.ogType ?? 'website');
 	out = upsertMetaByProperty(out, 'og:url', head.ogUrl);
+	out = upsertMetaByProperty(out, 'og:site_name', 'MechCurve');
 	out = upsertMetaByProperty(out, 'og:image', head.ogImageUrl);
+	out = upsertMetaByProperty(out, 'og:image:alt', head.title);
+	// Explicit dimensions let WhatsApp and LinkedIn lay the card out before the
+	// image finishes downloading — without them the preview often falls back to
+	// a small thumbnail or no image at all.
+	out = upsertMetaByProperty(out, 'og:image:width', '1200');
+	out = upsertMetaByProperty(out, 'og:image:height', '630');
 
 	out = upsertMetaByName(out, 'twitter:card', 'summary_large_image');
 	out = upsertMetaByName(out, 'twitter:title', head.title);
