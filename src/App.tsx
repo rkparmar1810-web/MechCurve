@@ -16,8 +16,11 @@ import LegalPage from './pages/LegalPage';
 import ServiceDetailPage from './pages/ServiceDetailPage';
 import BlogPage from './pages/BlogPage';
 import BlogDetailPage from './pages/BlogDetailPage';
+import useOffscreenAnimationPause from './hooks/useOffscreenAnimationPause';
 
 function App() {
+	useOffscreenAnimationPause();
+
 	return (
 		<SmoothScroll>
 			<div className="site-light-theme">

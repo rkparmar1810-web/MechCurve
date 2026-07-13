@@ -58,9 +58,9 @@ export default function Navbar() {
 
 	return (
 		<header
-			className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 border-b ${
+			className={`fixed top-0 left-0 right-0 z-50 transition-[background-color,border-color,box-shadow] duration-500 border-b ${
 				solid
-					? 'bg-[#06080D]/85 backdrop-blur-xl border-white/[0.06] shadow-[0_4px_24px_rgba(0,0,0,0.4)]'
+					? 'bg-[#06080D]/85 backdrop-blur-md border-white/[0.06] shadow-[0_4px_24px_rgba(0,0,0,0.4)]'
 					: 'bg-transparent border-transparent'
 			}`}
 		>
@@ -178,7 +178,7 @@ export default function Navbar() {
 			<AnimatePresence>
 				{open && (
 					<motion.nav
-						className="md:hidden border-b border-white/[0.06] bg-[#06080D]/97 backdrop-blur-xl shadow-[0_8px_24px_rgba(0,0,0,0.5)]"
+						className="md:hidden border-b border-white/[0.06] bg-[#06080D]/97 backdrop-blur-md shadow-[0_8px_24px_rgba(0,0,0,0.5)]"
 						initial={{ opacity: 0, height: 0 }}
 						animate={{ opacity: 1, height: 'auto' }}
 						exit={{ opacity: 0, height: 0 }}

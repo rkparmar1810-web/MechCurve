@@ -75,6 +75,16 @@
 		-ms-overflow-style: none;
 	}
 
+	/* Off-screen sections stop animating. Set by useOffscreenAnimationPause —
+	   the page runs many `infinite` keyframes, and without this the browser
+	   ticks all of them while you are scrolling somewhere else entirely. */
+	.anim-paused,
+	.anim-paused *,
+	.anim-paused *::before,
+	.anim-paused *::after {
+		animation-play-state: paused !important;
+	}
+
 	/* Reduced motion: disable all animations and transitions */
 	@media (prefers-reduced-motion: reduce) {
 		*,
@@ -413,8 +423,8 @@
 	.glass-panel {
 		@apply rounded-2xl border p-8;
 		background: rgba(255, 255, 255, 0.6);
-		backdrop-filter: blur(16px);
-		-webkit-backdrop-filter: blur(16px);
+		backdrop-filter: blur(12px);
+		-webkit-backdrop-filter: blur(12px);
 		border-color: rgba(226, 232, 240, 0.6);
 		box-shadow:
 			0 8px 24px rgba(0, 0, 0, 0.06),
@@ -424,8 +434,8 @@
 	.glass-panel-dark {
 		@apply rounded-2xl border p-8;
 		background: rgba(11, 30, 60, 0.6);
-		backdrop-filter: blur(16px);
-		-webkit-backdrop-filter: blur(16px);
+		backdrop-filter: blur(12px);
+		-webkit-backdrop-filter: blur(12px);
 		border-color: rgba(255, 255, 255, 0.1);
 		box-shadow:
 			0 8px 32px rgba(0, 0, 0, 0.3),

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useLocation } from 'react-router-dom';
+import { scrollToY } from '../SmoothScroll/SmoothScroll';
 
 export default function ScrollIndicator() {
 	const [visible, setVisible] = useState(true);
@@ -31,11 +32,7 @@ export default function ScrollIndicator() {
 
 	const scrollToEngineering = () => {
 		const el = document.getElementById('engineering');
-		if (el) {
-			const navH = 80;
-			const y = el.getBoundingClientRect().top + window.scrollY - navH;
-			window.scrollTo({ top: y, behavior: 'smooth' });
-		}
+		if (el) scrollToY(el, -80);
 	};
 
 	return (

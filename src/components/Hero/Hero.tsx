@@ -20,6 +20,7 @@ import {
 	LuPlane,
 } from 'react-icons/lu';
 import TextReveal from '../TextReveal/TextReveal';
+import { scrollToY } from '../SmoothScroll/SmoothScroll';
 import { WHATSAPP_NUMBER } from '../../data/faqContent';
 import styles from './Hero.module.scss';
 
@@ -51,9 +52,7 @@ const getNavbarHeight = () => {
 const scrollToSection = (id: string) => {
 	const el = document.getElementById(id);
 	if (el) {
-		const navH = getNavbarHeight();
-		const y = el.getBoundingClientRect().top + window.scrollY - navH;
-		window.scrollTo({ top: y, behavior: 'smooth' });
+		scrollToY(el, -getNavbarHeight());
 		window.history.replaceState(null, '', window.location.pathname);
 	}
 };

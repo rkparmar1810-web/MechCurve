@@ -7,14 +7,22 @@
   right: 0;
   z-index: 1000;
   padding: 18px 0;
-  transition: all $trans;
+  // Deliberately not `all`: that swept `backdrop-filter` into the transition,
+  // so the browser re-rendered the blur at interpolated radii for the whole
+  // 300ms the moment you started scrolling. The blur now snaps on (invisible
+  // behind the fading background) while the cheap properties animate.
+  transition:
+    background-color $trans,
+    padding $trans,
+    box-shadow $trans,
+    border-color $trans;
   background: transparent;
 }
 
 .scrolled {
   background: rgba($bg-white, 0.8);
-  -webkit-backdrop-filter: blur(24px) saturate(1.6);
-  backdrop-filter: blur(24px) saturate(1.6);
+  -webkit-backdrop-filter: blur(12px) saturate(1.6);
+  backdrop-filter: blur(12px) saturate(1.6);
   padding: 12px 0;
   border-bottom: 1px solid $glass-border;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);

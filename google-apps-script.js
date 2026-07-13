@@ -16,13 +16,13 @@
 //
 // ============================================================
 
-const ADMIN_EMAIL = 'admin@mechcurve.com'
-const SHEET_ID = 'YOUR_GOOGLE_SHEET_ID_HERE' // ← Replace this
+const ADMIN_EMAIL = "admin@mechcurve.com";
+const SHEET_ID = "YOUR_GOOGLE_SHEET_ID_HERE"; // ← Replace this
 
 function doPost(e) {
   try {
-    const data = JSON.parse(e.postData.contents)
-    const { name, email, phone, service, message } = data
+    const data = JSON.parse(e.postData.contents);
+    const { name, email, phone, service, message } = data;
 
     // ── 1. Send email to admin (standard formatted) ──────────────
     const adminHtmlBody = `
@@ -38,7 +38,7 @@ function doPost(e) {
             <tr><td style="padding:10px 12px;font-weight:bold;border-bottom:1px solid #e2e8f0;color:#334155;">Email</td>
                 <td style="padding:10px 12px;border-bottom:1px solid #e2e8f0;color:#1e293b;">${email}</td></tr>
             <tr><td style="padding:10px 12px;font-weight:bold;border-bottom:1px solid #e2e8f0;color:#334155;">Phone</td>
-                <td style="padding:10px 12px;border-bottom:1px solid #e2e8f0;color:#1e293b;">${phone || 'Not provided'}</td></tr>
+                <td style="padding:10px 12px;border-bottom:1px solid #e2e8f0;color:#1e293b;">${phone || "Not provided"}</td></tr>
             <tr><td style="padding:10px 12px;font-weight:bold;border-bottom:1px solid #e2e8f0;color:#334155;">Service</td>
                 <td style="padding:10px 12px;border-bottom:1px solid #e2e8f0;color:#1e293b;">${service}</td></tr>
             <tr><td style="padding:10px 12px;font-weight:bold;vertical-align:top;color:#334155;">Message</td>
@@ -46,10 +46,10 @@ function doPost(e) {
           </table>
         </div>
         <div style="background:#f1f5f9;padding:16px 32px;border-radius:0 0 12px 12px;border:1px solid #e2e8f0;border-top:none;">
-          <p style="color:#64748b;font-size:12px;margin:0;">Submitted on ${new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })}</p>
+          <p style="color:#64748b;font-size:12px;margin:0;">Submitted on ${new Date().toLocaleString("en-IN", { timeZone: "Asia/Kolkata" })}</p>
         </div>
       </div>
-    `
+    `;
 
     MailApp.sendEmail({
       to: ADMIN_EMAIL,
@@ -57,7 +57,7 @@ function doPost(e) {
       htmlBody: adminHtmlBody,
       replyTo: email,
       name: `${name} via MechCurve`,
-    })
+    });
 
     // ── 2. Send auto-reply confirmation to user ──────────────
     const userHtmlBody = `
@@ -94,49 +94,56 @@ function doPost(e) {
           </p>
         </div>
       </div>
-    `
+    `;
 
     MailApp.sendEmail({
       to: email,
       subject: `Thank you for contacting MechCurve — We'll be in touch!`,
       htmlBody: userHtmlBody,
-      name: 'MechCurve',
+      name: "MechCurve",
       replyTo: ADMIN_EMAIL,
-    })
+    });
 
     // ── 3. Append to Google Sheet ───────────
-    const sheet = SpreadsheetApp.openById(SHEET_ID).getActiveSheet()
+    const sheet = SpreadsheetApp.openById(SHEET_ID).getActiveSheet();
 
     // Add headers if sheet is empty
     if (sheet.getLastRow() === 0) {
-      sheet.appendRow(['Timestamp', 'Name', 'Email', 'Phone', 'Service', 'Message', 'Status'])
+      sheet.appendRow([
+        "Timestamp",
+        "Name",
+        "Email",
+        "Phone",
+        "Service",
+        "Message",
+        "Status",
+      ]);
     }
 
     sheet.appendRow([
       new Date().toISOString(),
       name,
       email,
-      phone || '',
+      phone || "",
       service,
       message,
-      'New',
-    ])
+      "New",
+    ]);
 
     // ── 4. Return success ───────────────────
-    return ContentService
-      .createTextOutput(JSON.stringify({ success: true }))
-      .setMimeType(ContentService.MimeType.JSON)
-
+    return ContentService.createTextOutput(
+      JSON.stringify({ success: true }),
+    ).setMimeType(ContentService.MimeType.JSON);
   } catch (err) {
-    return ContentService
-      .createTextOutput(JSON.stringify({ success: false, error: err.toString() }))
-      .setMimeType(ContentService.MimeType.JSON)
+    return ContentService.createTextOutput(
+      JSON.stringify({ success: false, error: err.toString() }),
+    ).setMimeType(ContentService.MimeType.JSON);
   }
 }
 
 // Handle CORS preflight (needed for browser fetch)
 function doGet() {
-  return ContentService
-    .createTextOutput(JSON.stringify({ status: 'ok' }))
-    .setMimeType(ContentService.MimeType.JSON)
+  return ContentService.createTextOutput(
+    JSON.stringify({ status: "ok" }),
+  ).setMimeType(ContentService.MimeType.JSON);
 }
