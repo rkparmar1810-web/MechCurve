@@ -1,4 +1,4 @@
-import { useEffect, useRef, createContext, useContext } from 'react';
+import { useEffect, useState, createContext, useContext } from 'react';
 import Lenis from 'lenis';
 
 const LenisContext = createContext<Lenis | null>(null);
@@ -12,35 +12,34 @@ export default function SmoothScroll({
 }: {
 	children: React.ReactNode;
 }) {
-	const lenisRef = useRef<Lenis | null>(null);
+	// State, not a ref: the instance is created in an effect, and a ref mutation
+	// does not re-render — so consumers of the context would have kept reading the
+	// initial `null` forever and never got hold of the Lenis instance.
+	const [lenis, setLenis] = useState<Lenis | null>(null);
 
 	useEffect(() => {
 		// Respect reduced-motion preference
 		if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
-		const lenis = new Lenis({
+		const instance = new Lenis({
 			duration: 1.2,
 			easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
 			touchMultiplier: 2,
 		});
 
-		lenisRef.current = lenis;
+		setLenis(instance);
 
-		function raf(time: number) {
-			lenis.raf(time);
-			requestAnimationFrame(raf);
-		}
-		requestAnimationFrame(raf);
+		let frame = requestAnimationFrame(function raf(time: number) {
+			instance.raf(time);
+			frame = requestAnimationFrame(raf);
+		});
 
 		return () => {
-			lenis.destroy();
-			lenisRef.current = null;
+			cancelAnimationFrame(frame);
+			instance.destroy();
+			setLenis(null);
 		};
 	}, []);
 
-	return (
-		<LenisContext.Provider value={lenisRef.current}>
-			{children}
-		</LenisContext.Provider>
-	);
+	return <LenisContext.Provider value={lenis}>{children}</LenisContext.Provider>;
 }
