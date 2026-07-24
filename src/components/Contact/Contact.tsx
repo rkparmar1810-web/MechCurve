@@ -18,8 +18,9 @@ import styles from './Contact.module.scss';
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
-// ← Replace with your deployed Google Apps Script URL
-const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbx2Ha2VpdCafpVArHcwhUtsrq3uudi-iIrM6JguEGCXyF3pFexdfNyn73kwBBSCdFqd4Q/exec';
+// Same-origin proxy (api/contact.ts) — forwards to Google Apps Script
+// server-side so the form still works on networks that block script.google.com.
+const CONTACT_ENDPOINT = '/api/contact';
 
 const SERVICE_OPTIONS = [
 	'CAD Design & 3D Modelling',
@@ -131,43 +132,21 @@ export default function Contact() {
 
 		setStatus('submitting');
 		try {
-			const res = await fetch(APPS_SCRIPT_URL, {
+			const res = await fetch(CONTACT_ENDPOINT, {
 				method: 'POST',
 				body: JSON.stringify(formData),
-				headers: { 'Content-Type': 'text/plain' },
-				redirect: 'follow',
+				headers: { 'Content-Type': 'application/json' },
 			});
+			const json = await res.json().catch(() => null);
 
-			// Google Apps Script may redirect; try reading body, but treat
-			// a successful HTTP status (or opaque redirect) as success.
-			if (res.ok || res.type === 'opaque' || res.redirected) {
-				try {
-					const json = await res.json();
-					if (json.success === false) {
-						setStatus('error');
-						return;
-					}
-				} catch {
-					// Response wasn't JSON (redirect / opaque) — still OK
-				}
+			if (res.ok && json?.success === true) {
 				setStatus('success');
 				setFormData({ name: '', email: '', phone: '', service: '', message: '' });
 			} else {
 				setStatus('error');
 			}
 		} catch {
-			// Network / CORS error — fall back to no-cors retry
-			try {
-				await fetch(APPS_SCRIPT_URL, {
-					method: 'POST',
-					body: JSON.stringify(formData),
-					mode: 'no-cors',
-				});
-				setStatus('success');
-				setFormData({ name: '', email: '', phone: '', service: '', message: '' });
-			} catch {
-				setStatus('error');
-			}
+			setStatus('error');
 		}
 	};
 
